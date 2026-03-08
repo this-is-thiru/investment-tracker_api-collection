@@ -1,0 +1,7 @@
+info:
+  name: ITS-22
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

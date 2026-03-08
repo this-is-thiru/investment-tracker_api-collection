@@ -1,0 +1,23 @@
+info:
+  name: Update Entity test1
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/entity-test1/update"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "695ce06dd4a63ac4073e92a0",
+        "email": "hii1@gmail.com",
+        "transactionDate": "2025-12-27"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

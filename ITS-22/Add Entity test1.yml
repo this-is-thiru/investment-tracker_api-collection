@@ -1,0 +1,22 @@
+info:
+  name: Add Entity test1
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/entity-test1/add"
+  body:
+    type: json
+    data: |-
+      {
+        "email": "hii@gmail.com",
+        "transactionDate": "2025-12-27"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
