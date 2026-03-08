@@ -1,0 +1,31 @@
+info:
+  name: Update priority
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/update/priority/:id/:priority"
+  params:
+    - name: id
+      value: 6885ce86a14230c33e85bc82
+      type: path
+    - name: priority
+      value: "1"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "action": "STOCK_SPLIT",
+          "stockCode": "RELIANCE",
+          "splitRatio": "2:1",
+          "recordDate": "2024-10-28"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

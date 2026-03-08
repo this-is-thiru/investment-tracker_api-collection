@@ -1,0 +1,10 @@
+name: Prod
+variables:
+  - name: INVESTMENT_TRACKER_SERVICE
+    value: ""
+  - name: JWT_TOKEN
+    value: ""
+  - name: EMAIL
+    value: ""
+  - secret: true
+    name: PASSWORD

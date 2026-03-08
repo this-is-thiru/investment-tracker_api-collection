@@ -1,0 +1,40 @@
+info:
+  name: BC by Id
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/broker-charges/:id"
+  params:
+    - name: id
+      value: 691f28d02b0a8d428eb77168
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "DUMMY",
+        "stockName": "Dummy stock",
+        "type": "STOCK_SPLIT",
+        "description": "description",
+        "ratio": "1:2",
+        "exDate": "2024-10-27",
+        "recordDate": "2024-10-27"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Retrieves broker charge details for a specific record by its unique ID.
+
+  - **Endpoint:** `GET {{INVESTMENT_TRACKER_SERVICE}}/broker-charges/:id`
+  - **Path Variable:** `id` (required) — The unique identifier of the broker charge record to retrieve.
+  - **Authentication:** Requires a valid `JWT_TOKEN`.
+
+  Use this endpoint to fetch detailed information about broker charges associated with the provided ID. Ensure that the `id` path variable is set and authentication is provided via the `JWT_TOKEN` variable.

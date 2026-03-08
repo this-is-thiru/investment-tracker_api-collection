@@ -1,0 +1,28 @@
+info:
+  name: Download | Transaction
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/stocks/download"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "entityName": "transactions",
+        "emailAddresses": [
+          "{{EMAIL}}"
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

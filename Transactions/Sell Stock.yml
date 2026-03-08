@@ -1,0 +1,48 @@
+info:
+  name: Sell Stock
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"stockCode\": \"A\",\r
+
+      \  \"stockName\": \"Dummy Stock\",\r
+
+      \  \"exchangeName\": \"NSE\",\r
+
+      \  \"brokerName\": \"ZERODHA\",\r
+
+      \  \"price\": 1000,\r
+
+      \  \"quantity\": 10,\r
+
+      \  \"assetType\": \"EQUITY\",\r
+
+      \  \"actorName\": \"Thiru\",\r
+
+      \  \"transactionType\": \"SELL\",\r
+
+      \  \"transactionDate\": \"2025-07-01\",\r
+
+      \  \"brokerCharges\": 10,\r
+
+      \  \"timeZoneId\": \"IST\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

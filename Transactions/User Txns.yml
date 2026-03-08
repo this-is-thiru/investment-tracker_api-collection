@@ -1,0 +1,42 @@
+info:
+  name: User Txns
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/transactions/user/:email"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"stockCode\": \"CODE1\",\r
+
+      \  \"stockName\": \"stockName_8b1634834167\",\r
+
+      \  \"exchangeName\": \"NSE\",\r
+
+      \  \"brokerName\": \"UPSTOX\",\r
+
+      \  \"price\": 10.1,\r
+
+      \  \"quantity\": 10,\r
+
+      \  \"totalValue\": 101,\r
+
+      \  \"transactionType\": \"BUY\",\r
+
+      \  \"transactionDate\": \"11-05-2024\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

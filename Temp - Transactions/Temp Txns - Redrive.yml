@@ -1,0 +1,19 @@
+info:
+  name: Temp Txns | Redrive
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/temporary-transactions/user/:email/redrive"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

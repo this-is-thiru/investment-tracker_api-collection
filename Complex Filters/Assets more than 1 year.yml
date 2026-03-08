@@ -1,0 +1,103 @@
+info:
+  name: Assets more than 1 year
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"filters\": [\r
+
+      \    {\r
+
+      \      \"filterKey\": \"transaction_date\",\r
+
+      \      \"operation\": \"LESSER_THAN_OR_EQUAL_TO\",\r
+
+      \      \"value\": \"2024-12-3\",\r
+
+      \      \"logicalOperation\": \"AND\",\r
+
+      \      \"expressionLogicalOperation\": \"AND\",\r
+
+      \      \"allowEmptyOrNull\": false,\r
+
+      \      \"caseSensitive\": false,\r
+
+      \      \"isDateField\": true\r
+
+      \    }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**  
+  This request retrieves user portfolio transactions where the 'transaction_date' is less than or equal to a specified date. It is used to filter assets that have been held for more than one year, or up to a given date, based on the provided filter criteria.
+
+  **Endpoint:**  
+  POST `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2`
+
+  **Required Variables:**
+
+  - `email` (path variable): The user's email address. Can be set directly or via the `EMAIL` environment variable.
+      
+  - `JWT_TOKEN` (header): Required for authentication. Ensure this variable is set in your environment.
+      
+  - `INVESTMENT_TRACKER_SERVICE` (environment variable): The base URL for the investment tracker service.
+      
+
+  **Request Body Structure:**  
+  The body must include a `filters` array. Each filter object should follow this schema:
+
+  ``` json
+  {
+    "filters": [
+      {
+        "filterKey": "transaction_date",
+        "operation": "LESSER_THAN_OR_EQUAL_TO",
+        "value": "YYYY-MM-DD",
+        "logicalOperation": "AND",
+        "expressionLogicalOperation": "AND",
+        "allowEmptyOrNull": false,
+        "caseSensitive": false,
+        "isDateField": true
+      }
+    ]
+  }
+
+   ```
+
+  - `filterKey`: Must be `transaction_date`.
+      
+  - `operation`: Use `LESSER_THAN_OR_EQUAL_TO` to filter up to the specified date.
+      
+  - `value`: The cutoff date in `YYYY-MM-DD` format.
+      
+  - Other fields control logical operations and filter behavior.
+      
+
+  **References:**
+
+  - [Filter](https://request/27168215-6cf5fe79-4ce2-4ff6-9dda-22967739faa8)
+      
+  - [Assets more than 1 year](https://request/27168215-234932b6-0524-479c-9e04-42fd76689635)
+      
+
+  This request is part of the 'Investment Tracker' collection and uses a standardized filter schema for querying portfolio transactions.

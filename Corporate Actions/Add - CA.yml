@@ -1,0 +1,41 @@
+info:
+  name: Add | CA
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/add"
+  body:
+    type: json
+    data: |
+      {
+        "stockCode": "A",
+        "stockName": "ADummy",
+        "type": "BONUS",
+        "description": "description",
+        "ratio": "1:1",
+        "exDate": "2025-12-03",
+        "recordDate": "2025-12-03",
+        "priority": 0,
+        "isTestCorporateAction": false
+      }
+
+      // {
+      //   "stockCode": "ASHOKLEY",
+      //   "stockName": "ASHOK LEYLAND",
+      //   "type": "BONUS",
+      //   "description": "description",
+      //   "ratio": "1:1",
+      //   "exDate": "2025-07-17",
+      //   "recordDate": "2025-07-17",
+      //   "priority": 0,
+      //   "isTestCorporateAction": false
+      // }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

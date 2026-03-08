@@ -1,0 +1,61 @@
+info:
+  name: Add | Asset Management Details
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/broker-charges/user/:email/add/asset-management-detail"
+  params:
+    - name: email
+      value: test@gmail.com
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "email": "test@gmail.com",
+        "dematAccountId": "demat_account_id_1",
+        "brokerName": "ZERODHA",
+        "accountOpeningCharges": 0.00,
+        "taxOnAccountOpeningCharges": 0.00,
+        "amcCharges": 300.00,
+        "taxOnAmcCharges": 18,
+        "lastAmcChargesDeductedOn": "2025-10-04",
+        "amcChargesFrequency": "QUARTERLY"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Adds asset management details for a specific user identified by their email address. This endpoint is used to record or update information related to a user's asset management account with a broker.
+
+  **Purpose:**
+  - Adds or updates asset management details for a user in the system.
+
+  **Required Path Variable:**
+  - `email` (string): The user's email address. This must be provided in the URL path.
+
+  **Required Body Fields:**
+  - `email` (string): The user's email address (should match the path variable).
+  - `dematAccountId` (string): Unique identifier for the user's demat account.
+  - `brokerName` (string): Name of the broker (e.g., ZERODHA).
+  - `accountOpeningCharges` (number): Charges for opening the account.
+  - `taxOnAccountOpeningCharges` (number): Tax applied to account opening charges.
+  - `amcCharges` (number): Annual Maintenance Charges (AMC).
+  - `taxOnAmcCharges` (number): Tax applied to AMC charges.
+  - `lastAmcChargesDeductedOn` (string, date): Date when AMC charges were last deducted (format: YYYY-MM-DD).
+  - `amcChargesFrequency` (string): Frequency of AMC charges (e.g., QUARTERLY).
+
+  **Authentication:**
+  - Requires a valid JWT token in the request headers (typically as `Authorization: Bearer <token>`).
+
+  **Notes:**
+  - Ensure all required fields are provided in the request body.
+  - The `email` in the body should match the path variable for consistency.
+  - Only authenticated users can access this endpoint.

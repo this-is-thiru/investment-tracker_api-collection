@@ -1,0 +1,63 @@
+info:
+  name: Transact | New
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/test/user/:email/transact/sell"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "transactionId": "transactionId_91f2ed8d4349",
+        "assetRequest": {
+          "stockCode": "TESTCODE1",
+          "stockName": "TESTCODE1 stockName",
+          "exchangeName": "NSE",
+          "brokerName": "ZERODHA",
+          "assetType": "EQUITY",
+          "price": 20.00,
+          "quantity": 40.00,
+          "transactionType": "SELL",
+          "accountType": "SELF",
+          "transactionDate": "2025-10-23"
+        },
+        "stockEntities": [
+          {
+            "stockCode": "TESTCODE1",
+            "stockName": "TESTCODE1 stockName",
+            "exchangeName": "NSE",
+            "brokerName": "ZERODHA",
+            "price": 10.00,
+            "quantity": 10.00,
+            "assetType": "EQUITY",
+            "transactionDate": "2025-10-01",
+            "accountType": "SELF",
+            "corporateActionType": "DIVIDEND"
+          },
+          {
+            "stockCode": "TESTCODE1",
+            "stockName": "TESTCODE1 stockName",
+            "exchangeName": "NSE",
+            "brokerName": "ZERODHA",
+            "price": 15.00,
+            "quantity": 20.00,
+            "assetType": "EQUITY",
+            "transactionDate": "2025-10-01",
+            "accountType": "SELF",
+            "corporateActionType": "DIVIDEND"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

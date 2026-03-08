@@ -1,0 +1,44 @@
+info:
+  name: Req
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request1"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"stockCode\": \"CODE1\",\r
+
+      \  \"stockName\": \"stockName_8b1634834167\",\r
+
+      \  \"exchangeName\": \"NSE\",\r
+
+      \  \"brokerName\": \"UPSTOX\",\r
+
+      \  \"price\": 10.1,\r
+
+      \  \"quantity\": 10,\r
+
+      \  \"totalValue\": 101,\r
+
+      \  \"transactionType\": \"BUY\",\r
+
+      \  \"transactionDate\": \"2024-05-10\",\r
+
+      \  \"maturityDate\": \"2024-05-10\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

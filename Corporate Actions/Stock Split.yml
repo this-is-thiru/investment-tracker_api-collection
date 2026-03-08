@@ -1,0 +1,28 @@
+info:
+  name: Stock Split
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/stocks/perform/corporate-action"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "action": "STOCK_SPLIT",
+          "stockCode": "RELIANCE",
+          "splitRatio": "2:1",
+          "recordDate": "2024-10-28"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

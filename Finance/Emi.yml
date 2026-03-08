@@ -1,0 +1,41 @@
+info:
+  name: Emi
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://localhost:8080/finances/calculate
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+                "calculationType": "EMI",
+                "principalAmount": 100000,
+                "rateOfInterest": 12,
+                "timePeriod": 20,
+                "finalAmount": 0,
+                "emiAmount": 0
+              }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generated from cURL: curl -X POST --location "http://localhost:8080/finances/calculate" \
+      -H "Content-Type: application/json" \
+      -d '{
+            "calculationType": "EMI",
+            "principalAmount": 100000,
+            "rateOfInterest": 12,
+            "timePeriod": 20,
+            "finalAmount": 0,
+            "emiAmount": 0
+          }'

@@ -1,0 +1,44 @@
+info:
+  name: Req3
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request3/hello1"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"email\": \"email_7cafef824f2e\",\r
+
+      \  \"financialYear\": \"financialYear_7b5a6625aa06\",\r
+
+      \  \"isProfit\": false,\r
+
+      \  \"realisedProfit\": 0.00,\r
+
+      \  \"capitalGains\": {\r
+
+      \    \"shortTermCapitalGains\": 0.00,\r
+
+      \    \"longTermCapitalGains\": 0.00\r
+
+      \  },\r
+
+      \  \"unrealisedProfit\": 0.00\r
+
+      }"
+  auth:
+    type: bearer
+    token: "{{jwt_token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

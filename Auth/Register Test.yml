@@ -1,0 +1,27 @@
+info:
+  name: Register Test
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/auth/test"
+  body:
+    type: json
+    data: "{\r
+
+      \    \"email\": \"pthirumalayadav@gmail.com\",\r
+
+      \    \"role\": [\"ROLE_ADMIN\"]\r
+
+      }"
+  auth:
+    type: basic
+    username: thiru
+    password: thiru
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

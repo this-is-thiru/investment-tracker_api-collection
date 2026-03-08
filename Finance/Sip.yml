@@ -1,0 +1,39 @@
+info:
+  name: Sip
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:8080/finances/interest-rate
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "initialAmount": 5000,
+          "stepUpRate": 0.01,
+          "stepUpFrequency": "1",
+          "months": 24,
+          "targetAmount": 142000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generated from cURL: curl -X POST --location "http://localhost:8080/finances/interest-rate" \
+      -H "Content-Type: application/json" \
+      -d '{
+            "initialAmount": 5000,
+            "stepUpRate": 10,
+            "stepUpFrequency": "MONTHLY",
+            "months": 24,
+            "targetAmount": 120000
+          }'

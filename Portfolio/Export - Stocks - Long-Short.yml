@@ -1,0 +1,41 @@
+info:
+  name: Export | Stocks - Long/Short
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/stocks/download"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "entityName": "assets",
+        "emailAddresses": [
+          "{{EMAIL}}"
+        ],
+        "filters": [
+          {
+            "filterKey": "transaction_date",
+            "operation": "GREATER_THAN",
+            "value": "2024-06-22",
+            "values": null,
+            "logicalOperation": null,
+            "expressionLogicalOperation": null,
+            "allowEmptyOrNull": null,
+            "caseSensitive": null,
+            "isDateField": true
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,32 @@
+info:
+  name: AMC impose
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/broker-charges/amc/impose"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Imposes Annual Maintenance Charges (AMC) for a broker account.
+
+  Purpose:
+  This endpoint is used to trigger the imposition of AMC charges for users/accounts managed by the investment tracker service.
+
+  Expected Input:
+  - Method: POST
+  - URL: {{INVESTMENT_TRACKER_SERVICE}}/broker-charges/amc/impose
+  - Headers: Typically requires authentication (e.g., JWT_TOKEN in headers or as a bearer token)
+  - Body: No request body is required for this endpoint.
+
+  Output:
+  - Returns a response indicating the success or failure of the AMC imposition process. The response may include details about the accounts affected and the status of the operation.
+
+  Use this endpoint to initiate AMC charges for all eligible accounts as per the broker's policy.

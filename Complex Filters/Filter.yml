@@ -1,0 +1,159 @@
+info:
+  name: Filter
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \    \"filters\": [\r
+
+      \        // {\r
+
+      \        //     \"filterKey\": \"stock_code\",\r
+
+      \        //     \"operation\": \"CONTAINS\",\r
+
+      \        //     \"values\": [\"AMARAJABAT\", \"ICICIBANK\", \"GREENPANEL\"],\r
+
+      \        //     \"logicalOperation\": \"AND\",\r
+
+      \        //     \"expressionLogicalOperation\": \"AND\",\r
+
+      \        //     \"allowEmptyOrNull\": false,\r
+
+      \        //     \"caseSensitive\": false\r
+
+      \        // },\r
+
+      \        {\r
+
+      \            \"filterKey\": \"transaction_date\",\r
+
+      \            \"operation\": \"GREATER_THAN\",\r
+
+      \            \"value\": \"2025-10-10\",\r
+
+      \            \"logicalOperation\": \"AND\",\r
+
+      \            \"expressionLogicalOperation\": \"AND\",\r
+
+      \            \"allowEmptyOrNull\": false,\r
+
+      \            \"caseSensitive\": false,\r
+
+      \            \"isDateField\": true\r
+
+      \        }\r
+
+      \        // {\r
+
+      \        //     \"filterKey\": \"transaction_date\",\r
+
+      \        //     \"operation\": \"LESSER_THAN_OR_EQUAL_TO\",\r
+
+      \        //     \"value\": \"2024-01-27\",\r
+
+      \        //     \"logicalOperation\": \"AND\",\r
+
+      \        //     \"expressionLogicalOperation\": \"AND\",\r
+
+      \        //     \"allowEmptyOrNull\": false,\r
+
+      \        //     \"caseSensitive\": false,\r
+
+      \        //     \"isDateField\": true\r
+
+      \        // }\r
+
+      \    ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**  
+  This request allows you to filter a user's portfolio transactions based on customizable criteria. It is designed to provide flexible querying of transaction records, enabling users to retrieve only the transactions that match specific filters such as transaction date, stock code, and other attributes.
+
+  **Endpoint:**  
+  POST `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2`
+
+  **Request Body Structure:**
+
+  - The body must be a JSON object containing a `filters` array.
+      
+  - Each element in the `filters` array is an object specifying a filter condition.
+      
+
+  **Filter Object Fields:**
+
+  - `filterKey` (string): The field to filter by (e.g., `transaction_date`, `stock_code`).
+      
+  - `operation` (string): The comparison operation (e.g., `GREATER_THAN`, `LESSER_THAN_OR_EQUAL_TO`, `CONTAINS`).
+      
+  - `value` or `values`: The value(s) to compare against. Use `value` for single-value filters (e.g., dates), and `values` (array) for multi-value filters (e.g., multiple stock codes).
+      
+  - `logicalOperation` (string): Logical operator to combine with other filters (e.g., `AND`, `OR`).
+      
+  - `expressionLogicalOperation` (string): Logical operator for nested expressions (usually `AND` or `OR`).
+      
+  - `allowEmptyOrNull` (boolean): Whether to allow empty or null values in the filter.
+      
+  - `caseSensitive` (boolean): Whether the filter should be case-sensitive.
+      
+  - `isDateField` (boolean, optional): Set to `true` if the field is a date (e.g., `transaction_date`).
+      
+
+  **Example Request Body:**
+
+  ``` json
+  {
+    "filters": [
+      {
+        "filterKey": "transaction_date",
+        "operation": "GREATER_THAN",
+        "value": "2024-03-10",
+        "logicalOperation": "AND",
+        "expressionLogicalOperation": "AND",
+        "allowEmptyOrNull": false,
+        "caseSensitive": false,
+        "isDateField": true
+      }
+    ]
+  }
+
+   ```
+
+  **Usage Scenarios:**
+
+  - Retrieve all transactions after a specific date.
+      
+  - Filter transactions for specific stock codes.
+      
+  - Combine multiple filters (e.g., transactions after a date AND for certain stocks).
+      
+
+  **Related Requests:**
+
+  - See the [Assets more than 1 year](https://request/27168215-234932b6-0524-479c-9e04-42fd76689635) request for an example of filtering assets based on holding period.
+      
+
+  **Notes:**
+
+  - The available filter keys and operations may depend on the backend implementation.
+      
+  - This request is useful for building custom portfolio views, generating reports, or exporting filtered transaction data.

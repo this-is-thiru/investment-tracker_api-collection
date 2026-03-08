@@ -1,0 +1,31 @@
+info:
+  name: CA | Del
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/delete/:id"
+  params:
+    - name: id
+      value: 6885c5756ca0fdffee9cb549
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "DUMMY",
+        "stockName": "Dummy stock",
+        "type": "STOCK_SPLIT",
+        "description": "description",
+        "ratio": "1:2",
+        "exDate": "2024-10-27",
+        "recordDate": "2024-10-27"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,30 @@
+info:
+  name: Rename Symbol
+  type: http
+  seq: 10
+
+http:
+  method: PUT
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/perform"
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "ICICIBANK3",
+        "stockName": "ICICI Bank Ltd",
+        "toStockCode": "ICICIBANK",
+        "toStockName": "ICICI Bank Ltd",
+        "type": "NAME_OR_SYMBOL_CHANGE",
+        "description": "Setting the to default",
+        "actionPrice": "actionPrice_d0b714a54f55",
+        "ratio": "ratio_caf24b98b0aa",
+        "exDate": "2025-05-27",
+        "recordDate": "2025-05-23"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

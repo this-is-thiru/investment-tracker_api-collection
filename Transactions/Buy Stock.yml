@@ -1,0 +1,109 @@
+info:
+  name: Buy Stock
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"stockCode\": \"A\",\r
+
+      \  \"stockName\": \"ADummy\",\r
+
+      \  \"exchangeName\": \"NSE\",\r
+
+      \  \"brokerName\": \"ZERODHA\",\r
+
+      \  \"price\": 100,\r
+
+      \  \"quantity\": 10,\r
+
+      \  \"assetType\": \"EQUITY\",\r
+
+      \  \"actorName\": \"Thiru\",\r
+
+      \  \"transactionType\": \"BUY\",\r
+
+      \  \"transactionDate\": \"2025-11-10\",\r
+
+      \  \"brokerCharges\": 10,\r
+
+      \  \"timeZoneId\": \"IST\"\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  This endpoint records a stock purchase transaction for a specific user in the investment portfolio system.
+
+  **HTTP Method:** POST
+
+  **Endpoint:** `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction`
+
+  ---
+
+  **Path Variable:**
+  - `email` (string, required): The email address of the user for whom the transaction is being recorded. Example: `user@example.com`
+
+  **Authentication:**
+  - Requires a valid JWT token provided in the `Authorization` header as a Bearer token. Use the `JWT_TOKEN` environment variable.
+
+  **Request Body (JSON):**
+  - `stockCode` (string): The unique code of the stock being purchased. Example: `ASHOKLEYDUMMY`
+  - `stockName` (string): The name of the stock. Example: `Dummy Stock`
+  - `exchangeName` (string): The stock exchange where the stock is listed. Example: `NSE`
+  - `brokerName` (string): The name of the broker facilitating the transaction. Example: `ZERODHA`
+  - `price` (number): The price per unit of the stock.
+  - `quantity` (integer): The number of stock units purchased.
+  - `assetType` (string): The type of asset. Example: `EQUITY`
+  - `actorName` (string): The name of the person performing the transaction.
+  - `transactionType` (string): The type of transaction. For buying, use `BUY`.
+  - `transactionDate` (string, ISO 8601): The date of the transaction. Example: `2025-07-01`
+  - `brokerCharges` (number): The charges levied by the broker for the transaction.
+  - `timeZoneId` (string): The time zone identifier. Example: `IST`
+
+  ---
+
+  **Example Request:**
+  ```
+  POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/{{EMAIL}}/transaction
+  Authorization: Bearer {{JWT_TOKEN}}
+  Content-Type: application/json
+
+  {
+    "stockCode": "ASHOKLEYDUMMY",
+    "stockName": "Dummy Stock",
+    "exchangeName": "NSE",
+    "brokerName": "ZERODHA",
+    "price": 100,
+    "quantity": 16,
+    "assetType": "EQUITY",
+    "actorName": "Thiru",
+    "transactionType": "BUY",
+    "transactionDate": "2025-07-01",
+    "brokerCharges": 10,
+    "timeZoneId": "IST"
+  }
+  ```
+
+  ---
+
+  **Related Endpoints:**
+  - [Sell Stock](request/27168215-a367000b-b122-4f00-a84e-9d7cc7a6e642): For recording stock sale transactions.
+
+  This documentation is consistent with related requests such as 'Sell Stock' and 'Buy Stock' for clarity and uniformity.

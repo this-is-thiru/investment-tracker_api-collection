@@ -1,0 +1,142 @@
+info:
+  name: Transactions
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/transactions/user/:email"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: "{\r
+
+      \  \"filters\": [\r
+
+      \    // {\r
+
+      \    //   \"filterKey\": \"stock_code\",\r
+
+      \    //   \"operation\": \"CONTAINS\",\r
+
+      \    //   \"value\": \"SADHNANIQ\",\r
+
+      \    //   \"logicalOperation\": \"AND\",\r
+
+      \    //   \"expressionLogicalOperation\": \"AND\",\r
+
+      \    //   \"allowEmptyOrNull\": false,\r
+
+      \    //   \"caseSensitive\": false,\r
+
+      \    //   \"isDateField\": false\r
+
+      \    // }\r
+
+      \    {\r
+
+      \      \"filterKey\": \"transaction_date\",\r
+
+      \      \"operation\": \"GREATER_THAN_OR_EQUAL_TO\",\r
+
+      \      \"value\": \"2025-09-05\",\r
+
+      \      \"logicalOperation\": \"AND\",\r
+
+      \      \"expressionLogicalOperation\": \"AND\",\r
+
+      \      \"allowEmptyOrNull\": false,\r
+
+      \      \"caseSensitive\": false,\r
+
+      \      \"isDateField\": true\r
+
+      \    }\r
+
+      \    // {\r
+
+      \    //   \"filterKey\": \"transaction_date\",\r
+
+      \    //   \"operation\": \"LESSER_THAN\",\r
+
+      \    //   \"value\": \"2025-04-01\",\r
+
+      \    //   \"logicalOperation\": \"AND\",\r
+
+      \    //   \"expressionLogicalOperation\": \"AND\",\r
+
+      \    //   \"allowEmptyOrNull\": false,\r
+
+      \    //   \"caseSensitive\": false,\r
+
+      \    //   \"isDateField\": true\r
+
+      \    // }\r
+
+      \  ]\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  **Purpose:**
+  This endpoint retrieves a list of transactions for a specific user, allowing advanced filtering based on various criteria. It is useful for fetching transaction history, generating reports, or analyzing user activity.
+
+  **Path Variable:**
+  - `:email` (required): The email address of the user whose transactions are to be fetched. This should be provided as part of the URL path (e.g., `/transactions/user/john.doe@example.com`).
+
+  **Authentication:**
+  - Requires a valid JWT token to be included in the `Authorization` header as a Bearer token. Ensure the `JWT_TOKEN` variable is set in your environment.
+
+  **Request Body Structure:**
+  - The body must be a JSON object containing a `queryFilters` array. Each item in this array is an object specifying a filter condition.
+
+  **`queryFilters` Array:**
+  - Each filter object supports the following fields:
+    - `filterKey`: The field to filter by (e.g., `transaction_date`, `stock_code`).
+    - `operation`: The comparison operation (e.g., `GREATER_THAN_OR_EQUAL_TO`, `LESSER_THAN`, `CONTAINS`).
+    - `value`: The value to compare against.
+    - `logicalOperation`: Logical operator to combine with other filters (e.g., `AND`, `OR`).
+    - `expressionLogicalOperation`: Used for grouping expressions (typically `AND`).
+    - `allowEmptyOrNull`: Boolean to allow empty/null values.
+    - `caseSensitive`: Boolean for case sensitivity (mainly for string fields).
+    - `isDateField`: Boolean indicating if the field is a date.
+
+  **Supported Filter Keys and Operations:**
+  - `transaction_date`: Use with operations like `GREATER_THAN_OR_EQUAL_TO`, `LESSER_THAN` for date range filtering.
+  - `stock_code`: Use with `CONTAINS` for partial matches.
+  - Additional keys/operations may be supported depending on backend implementation.
+
+  **Example Request Body:**
+  ```json
+  {
+    "queryFilters": [
+      {
+        "filterKey": "transaction_date",
+        "operation": "GREATER_THAN_OR_EQUAL_TO",
+        "value": "2025-06-30",
+        "logicalOperation": "AND",
+        "expressionLogicalOperation": "AND",
+        "allowEmptyOrNull": false,
+        "caseSensitive": false,
+        "isDateField": true
+      }
+    ]
+  }
+  ```
+
+  **References:**
+  - See the [Transations | Filter](request/27168215-1b18427f-7d26-492b-8664-4fe1a937c296) request for additional filtering examples and usage patterns.
+
+  **Related Requests:**
+  - [Transactions](request/27168215-17f65827-a2cc-440c-8ebf-2f39c51286d1) (this request)
+  - [Transations | Filter](request/27168215-1b18427f-7d26-492b-8664-4fe1a937c296)

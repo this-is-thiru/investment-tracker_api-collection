@@ -1,0 +1,80 @@
+info:
+  name: Add | BC
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/broker-charges/add"
+  body:
+    type: json
+    data: |-
+      {
+        "brokerName": "ZERODHA",
+        "startDate": "2024-10-01",
+        "status": "ACTIVE",
+        "accountOpeningCharges": 0.00,
+        "amcChargesAnnually": 300.00,
+        "brokerageCharges": {
+          "brokerage": 0.00,
+          "brokerageCharges": 0.00,
+          "brokerageAggregator": "MIN",
+          "minimumBrokerage": 0.00,
+          "maximumBrokerage": 0.00
+        },
+        "dpChargesPerScrip": 13.00,
+        "stt": 0.00,
+        "sebiCharges": 0.00,
+        "stampDuty": 0.00,
+        "gstApplicableDescription": "18-dp_charges,18-amc_charges"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Summary:**
+  Adds a new broker charge configuration for a specified broker.
+
+  **HTTP Method & URL:**
+  POST {{INVESTMENT_TRACKER_SERVICE}}/broker-charges/add
+
+  **Required Parameters:**
+  - brokerName (string): Name of the broker (e.g., "ZERODHA")
+  - startDate (string, date): Start date for the charges (e.g., "2024-10-01")
+  - status (string): Status of the broker charges (e.g., "ACTIVE")
+  - accountOpeningCharges (number): Account opening charges
+  - amcChargesAnnually (number): Annual maintenance charges
+  - brokerageCharges (object):
+      - brokerage (number)
+      - brokerageCharges (number)
+      - brokerageAggregator (string): Aggregation type (e.g., "MIN")
+      - minimumBrokerage (number)
+      - maximumBrokerage (number)
+  - dpChargesPerScrip (number): DP charges per scrip
+  - stt (number): Securities Transaction Tax
+  - sebiCharges (number): SEBI charges
+  - stampDuty (number): Stamp duty
+  - gstApplicableDescription (string): GST details (e.g., "18-dp_charges,18-amc_charges")
+
+  **Example Request Body:**
+  ```json
+  {"brokerName":"ZERODHA","startDate":"2024-10-01","status":"ACTIVE","accountOpeningCharges":0,"amcChargesAnnually":300,"brokerageCharges":{"brokerage":0,"brokerageCharges":0,"brokerageAggregator":"MIN","minimumBrokerage":0,"maximumBrokerage":0},"dpChargesPerScrip":13,"stt":0,"sebiCharges":0,"stampDuty":0,"gstApplicableDescription":"18-dp_charges,18-amc_charges"}
+  ```
+
+  **Example Response:**
+  - 200 OK: Returns the created broker charge object or a success message.
+  - 400 Bad Request: Invalid input data.
+
+  **Authentication:**
+  Bearer token required in header: `Authorization: Bearer {{JWT_TOKEN}}`
+
+  **Notes:**
+  - Ensure all required fields are provided.
+  - Only users with appropriate permissions can add broker charges.
+
+  [Reference: Add | BC](request/27168215-f45e4816-46da-4a79-9a41-7a4caa07e1b9)

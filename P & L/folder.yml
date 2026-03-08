@@ -1,0 +1,7 @@
+info:
+  name: P & L
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit

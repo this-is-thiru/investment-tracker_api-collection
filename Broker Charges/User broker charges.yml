@@ -1,0 +1,66 @@
+info:
+  name: User broker charges
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/user-broker-charges/user/:email/all"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "brokerName": "ZERODHA",
+        "startDate": "2024-10-01",
+        "status": "ACTIVE",
+        "accountOpeningCharges": 0.00,
+        "amcChargesAnnually": 300.00,
+        "brokerageCharges": {
+          "brokerage": 0.00,
+          "brokerageCharges": 0.00,
+          "brokerageAggregator": "MIN",
+          "minimumBrokerage": 0.00,
+          "maximumBrokerage": 0.00
+        },
+        "dpChargesPerScrip": 13.00,
+        "stt": 0.00,
+        "sebiCharges": 0.00,
+        "stampDuty": 0.00,
+        "gstApplicableDescription": "18-dp_charges,18-amc_charges"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  This endpoint retrieves all broker charges associated with a specific user, identified by their email address. It is typically used to fetch a comprehensive list of broker-related charges for a user in the investment tracking system.
+
+  **Endpoint:**
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/user-broker-charges/user/:email/all`
+
+  **Path Variable:**
+  - `email` (required): The email address of the user whose broker charges are to be fetched. This should be provided as part of the URL path. The value is typically supplied via the `EMAIL` environment variable (i.e., `{{EMAIL}}`).
+
+  **Authentication:**
+  - This request requires authentication. The JWT token should be provided in the request headers, typically using the `Authorization: Bearer {{JWT_TOKEN}}` header. The `JWT_TOKEN` is expected to be set as an environment variable.
+
+  **Environment Variables:**
+  - `INVESTMENT_TRACKER_SERVICE`: The base URL for the investment tracker service.
+  - `JWT_TOKEN`: The authentication token for API access.
+  - `EMAIL`: The user's email address to be used as the path variable.
+
+  **Request Body:**
+  - This is a GET request and does not require a request body. Any body content present will be ignored by the server.
+
+  **Usage Notes:**
+  - Ensure that all required environment variables are set before sending the request.
+  - The response will contain a list of broker charges for the specified user.

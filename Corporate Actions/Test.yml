@@ -1,0 +1,27 @@
+info:
+  name: Test
+  type: http
+  seq: 9
+
+http:
+  method: PUT
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/perform/test"
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "DUMMY",
+        "stockName": "Dummy stock",
+        "type": "BONUS",
+        "description": "description",
+        "ratio": "1:2",
+        "exDate": "2025-03-27",
+        "recordDate": "2025-07-28"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
