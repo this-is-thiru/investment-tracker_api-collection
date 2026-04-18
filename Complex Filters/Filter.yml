@@ -12,71 +12,40 @@ http:
       type: path
   body:
     type: json
-    data: "{\r
-
-      \    \"filters\": [\r
-
-      \        // {\r
-
-      \        //     \"filterKey\": \"stock_code\",\r
-
-      \        //     \"operation\": \"CONTAINS\",\r
-
-      \        //     \"values\": [\"AMARAJABAT\", \"ICICIBANK\", \"GREENPANEL\"],\r
-
-      \        //     \"logicalOperation\": \"AND\",\r
-
-      \        //     \"expressionLogicalOperation\": \"AND\",\r
-
-      \        //     \"allowEmptyOrNull\": false,\r
-
-      \        //     \"caseSensitive\": false\r
-
-      \        // },\r
-
-      \        {\r
-
-      \            \"filterKey\": \"transaction_date\",\r
-
-      \            \"operation\": \"GREATER_THAN\",\r
-
-      \            \"value\": \"2025-10-10\",\r
-
-      \            \"logicalOperation\": \"AND\",\r
-
-      \            \"expressionLogicalOperation\": \"AND\",\r
-
-      \            \"allowEmptyOrNull\": false,\r
-
-      \            \"caseSensitive\": false,\r
-
-      \            \"isDateField\": true\r
-
-      \        }\r
-
-      \        // {\r
-
-      \        //     \"filterKey\": \"transaction_date\",\r
-
-      \        //     \"operation\": \"LESSER_THAN_OR_EQUAL_TO\",\r
-
-      \        //     \"value\": \"2024-01-27\",\r
-
-      \        //     \"logicalOperation\": \"AND\",\r
-
-      \        //     \"expressionLogicalOperation\": \"AND\",\r
-
-      \        //     \"allowEmptyOrNull\": false,\r
-
-      \        //     \"caseSensitive\": false,\r
-
-      \        //     \"isDateField\": true\r
-
-      \        // }\r
-
-      \    ]\r
-
-      }"
+    data: |-
+      {
+          "queryFilters": [
+              // {
+              //     "filterKey": "stock_code",
+              //     "operation": "CONTAINS",
+              //     "values": ["AMARAJABAT", "ICICIBANK", "GREENPANEL"],
+              //     "logicalOperation": "AND",
+              //     "expressionLogicalOperation": "AND",
+              //     "allowEmptyOrNull": false,
+              //     "caseSensitive": false
+              // },
+              {
+                  "filterKey": "transaction_date",
+                  "operation": "GREATER_THAN",
+                  "value": "2025-10-10",
+                  "logicalOperation": "AND",
+                  "expressionLogicalOperation": "AND",
+                  "allowEmptyOrNull": false,
+                  "caseSensitive": false,
+                  "isDateField": true
+              }
+              // {
+              //     "filterKey": "transaction_date",
+              //     "operation": "LESSER_THAN_OR_EQUAL_TO",
+              //     "value": "2024-01-27",
+              //     "logicalOperation": "AND",
+              //     "expressionLogicalOperation": "AND",
+              //     "allowEmptyOrNull": false,
+              //     "caseSensitive": false,
+              //     "isDateField": true
+              // }
+          ]
+      }
   auth: inherit
 
 settings:
