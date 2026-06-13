@@ -5,11 +5,29 @@ info:
 
 http:
   method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/user/:email/perform/OCTOBER/2025"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/user/:email/perform"
   params:
     - name: email
       value: "{{EMAIL}}"
       type: path
+  body:
+    type: json
+    data: |-
+      // {
+      //   "month": "OCTOBER",
+      //   "year": 2024,
+      //   "brokerName": "ZERODHA"
+      // }
+      // {
+      //   "month": "JULY",
+      //   "year": 2025,
+      //   "brokerName": "ZERODHA"
+      // }
+      {
+        "month": "OCTOBER",
+        "year": 2025,
+        "brokerName": "ZERODHA"
+      }
   auth: inherit
 
 settings:

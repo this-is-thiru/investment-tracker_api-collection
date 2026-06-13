@@ -8,7 +8,7 @@ http:
   url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/delete/:id"
   params:
     - name: id
-      value: 6885c5756ca0fdffee9cb549
+      value: 69e63956d319642fc261966d
       type: path
   body:
     type: json

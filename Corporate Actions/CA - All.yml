@@ -6,18 +6,6 @@ info:
 http:
   method: GET
   url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/all"
-  body:
-    type: json
-    data: |-
-      {
-        "stockCode": "DUMMY",
-        "stockName": "Dummy stock",
-        "type": "STOCK_SPLIT",
-        "description": "description",
-        "ratio": "1:2",
-        "exDate": "2024-10-27",
-        "recordDate": "2024-10-27"
-      }
   auth: inherit
 
 settings:

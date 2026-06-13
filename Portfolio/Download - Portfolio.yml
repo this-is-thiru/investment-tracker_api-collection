@@ -17,6 +17,18 @@ http:
         "entityName": "assets",
         "emailAddresses": [
           "{{EMAIL}}"
+        ],
+        "queryFilters": [
+          {
+            "filterKey": "broker_name",
+            "operation": "EQUALS",
+            "value": "ZERODHA",
+            "logicalOperation": "AND",
+            "expressionLogicalOperation": "AND",
+            "allowEmptyOrNull": false,
+            "caseSensitive": false,
+            "isDateField": false
+          }
         ]
       }
   auth: inherit

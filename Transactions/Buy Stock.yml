@@ -12,33 +12,36 @@ http:
       type: path
   body:
     type: json
-    data: "{\r
+    data: |-
+      // {
+      //     "stockCode": "C",
+      //     "stockName": "Hindustan Unilever Ltd",
+      //     "exchangeName": "NSE",
+      //     "brokerName": "ZERODHA",
+      //     "price": 45.74,
+      //     "quantity": 110,
+      //     "assetType": "EQUITY",
+      //     "actorName": null,
+      //     "transactionType": "BUY",
+      //     "transactionDate": "2026-05-27",
+      //     "brokerCharges": 0.01,
+      //     "timeZoneId": "Asia/Kolkata"
+      //   }
 
-      \  \"stockCode\": \"A\",\r
-
-      \  \"stockName\": \"ADummy\",\r
-
-      \  \"exchangeName\": \"NSE\",\r
-
-      \  \"brokerName\": \"ZERODHA\",\r
-
-      \  \"price\": 100,\r
-
-      \  \"quantity\": 10,\r
-
-      \  \"assetType\": \"EQUITY\",\r
-
-      \  \"actorName\": \"Thiru\",\r
-
-      \  \"transactionType\": \"BUY\",\r
-
-      \  \"transactionDate\": \"2025-11-10\",\r
-
-      \  \"brokerCharges\": 10,\r
-
-      \  \"timeZoneId\": \"IST\"\r
-
-      }"
+      {
+          "stockCode": "C",
+          "stockName": "Hindustan Unilever Ltd",
+          "exchangeName": "NSE",
+          "brokerName": "ZERODHA",
+          "price": 44.80,
+          "quantity": 33,
+          "assetType": "EQUITY",
+          "actorName": null,
+          "transactionType": "BUY",
+          "transactionDate": "2026-05-27",
+          "brokerCharges": 0.01,
+          "timeZoneId": "Asia/Kolkata"
+        }
   auth: inherit
 
 settings:

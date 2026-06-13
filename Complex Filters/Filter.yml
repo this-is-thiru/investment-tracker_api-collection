@@ -14,37 +14,57 @@ http:
     type: json
     data: |-
       {
-          "queryFilters": [
-              // {
-              //     "filterKey": "stock_code",
-              //     "operation": "CONTAINS",
-              //     "values": ["AMARAJABAT", "ICICIBANK", "GREENPANEL"],
-              //     "logicalOperation": "AND",
-              //     "expressionLogicalOperation": "AND",
-              //     "allowEmptyOrNull": false,
-              //     "caseSensitive": false
-              // },
-              {
-                  "filterKey": "transaction_date",
-                  "operation": "GREATER_THAN",
-                  "value": "2025-10-10",
-                  "logicalOperation": "AND",
-                  "expressionLogicalOperation": "AND",
-                  "allowEmptyOrNull": false,
-                  "caseSensitive": false,
-                  "isDateField": true
-              }
-              // {
-              //     "filterKey": "transaction_date",
-              //     "operation": "LESSER_THAN_OR_EQUAL_TO",
-              //     "value": "2024-01-27",
-              //     "logicalOperation": "AND",
-              //     "expressionLogicalOperation": "AND",
-              //     "allowEmptyOrNull": false,
-              //     "caseSensitive": false,
-              //     "isDateField": true
-              // }
-          ]
+        "queryFilters": [
+          // {
+          //     "filterKey": "stock_code",
+          //     "operation": "CONTAINS",
+          //     "values": ["AMARAJABAT", "ICICIBANK", "GREENPANEL"],
+          //     "logicalOperation": "AND",
+          //     "expressionLogicalOperation": "AND",
+          //     "allowEmptyOrNull": false,
+          //     "caseSensitive": false
+          // },
+      //     {
+      //       "filterKey": "transaction_date",
+      //       "operation": "GREATER_THAN",
+      //       "value": "2024-10-10",
+      //       "logicalOperation": "AND",
+      //       "expressionLogicalOperation": "AND",
+      //       "allowEmptyOrNull": false,
+      //       "caseSensitive": false,
+      //       "isDateField": true
+      //     }
+          {
+            "filterKey": "broker_name",
+            "operation": "EQUALS",
+            "value": "ZERODHA",
+            "logicalOperation": "AND",
+            "expressionLogicalOperation": "AND",
+            "allowEmptyOrNull": false,
+            "caseSensitive": false,
+            "isDateField": false
+          },
+          {
+            "filterKey": "stock_code",
+            "operation": "EQUALS",
+            "value": "ITBEES",
+            "logicalOperation": "AND",
+            "expressionLogicalOperation": "AND",
+            "allowEmptyOrNull": false,
+            "caseSensitive": false,
+            "isDateField": false
+          }
+          // {
+          //     "filterKey": "transaction_date",
+          //     "operation": "LESSER_THAN_OR_EQUAL_TO",
+          //     "value": "2024-01-27",
+          //     "logicalOperation": "AND",
+          //     "expressionLogicalOperation": "AND",
+          //     "allowEmptyOrNull": false,
+          //     "caseSensitive": false,
+          //     "isDateField": true
+          // }
+        ]
       }
   auth: inherit
 

@@ -5,8 +5,11 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/upload-transactions"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/upload-transactions?quarter=Q4"
   params:
+    - name: quarter
+      value: Q4
+      type: query
     - name: email
       value: "{{EMAIL}}"
       type: path
@@ -16,7 +19,7 @@ http:
       - name: file
         type: file
         value:
-          - /C:/Users/91630/OneDrive/Desktop/files/Income tax Docs/API Testing/Upload-transcations/test-template.xlsx
+          - /Users/pthirumalayadav/Desktop/NEW UPLOAD/TO BE/ZERODHA/Zerodha_2526.xlsx
   auth: inherit
 
 settings:

@@ -8,29 +8,68 @@ http:
   url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/add"
   body:
     type: json
-    data: |
+    data: |-
       {
         "stockCode": "A",
-        "stockName": "ADummy",
-        "type": "BONUS",
+        "stockName": "Hindustan Unilever Ltd",
+        "type": "DEMERGER",
+        "assetType": "EQUITY",
         "description": "description",
-        "ratio": "1:1",
-        "exDate": "2025-12-03",
-        "recordDate": "2025-12-03",
         "priority": 0,
-        "isTestCorporateAction": false
+        "demergerDetail": {
+          "demergerRatio": "1:1",
+          "demergerPriceRatio": "98.09:1.91",
+          "mainStockCode": "A",
+          "mainStockName": "Hindustan Unilever Ltd",
+          "demergerStocks": [
+            {
+              "stockCode": "B",
+              "stockName": "Kwality Wall's India Limited"
+            }
+          ]
+        },
+        "exDate": "2026-05-28",
+        "recordDate": "2026-05-28",
+        "date": "2026-05-28"
       }
 
       // {
-      //   "stockCode": "ASHOKLEY",
-      //   "stockName": "ASHOK LEYLAND",
+      //   "stockCode": "HDFCBANK",
+      //   "stockName": "HDFC Bank Ltd",
       //   "type": "BONUS",
+      //   "assetType": "EQUITY",
       //   "description": "description",
-      //   "ratio": "1:1",
-      //   "exDate": "2025-07-17",
-      //   "recordDate": "2025-07-17",
       //   "priority": 0,
-      //   "isTestCorporateAction": false
+      //   "ratio": "1:1",
+      //   "exDate": "2025-08-26",
+      //   "recordDate": "2025-08-26",
+      //   "date": "2025-08-26"
+      // }
+
+      // {
+      //   "stockCode": "RELIANCE",
+      //   "stockName": "Reliance Industries Ltd",
+      //   "type": "BONUS",
+      //   "assetType": "EQUITY",
+      //   "description": "description",
+      //   "priority": 0,
+      //   "ratio": "1:1",
+      //   "exDate": "2024-10-28",
+      //   "recordDate": "2024-10-28",
+      //   "date": "2024-10-28"
+      // }
+
+      // {
+      //   "stockCode": "MSUMI",
+      //   "stockName": "Motherson Sumi Wiring India Ltd",
+      //   "type": "BONUS",
+      //   "assetType": "EQUITY",
+      //   "description": "description",
+      //   "priority": 0,
+      //   "ratio": "1:2",
+      //   "exDate": "2025-07-18",
+      //   "recordDate": "2025-07-18",
+      //   "date": "2025-07-18"
       // }
   auth: inherit
 

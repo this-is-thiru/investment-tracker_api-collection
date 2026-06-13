@@ -11,7 +11,7 @@ http:
       value: "{{EMAIL}}"
       type: path
     - name: stockCode
-      value: FCL
+      value: ITBEES
       type: path
   body:
     type: json

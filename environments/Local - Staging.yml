@@ -1,10 +1,10 @@
 name: Local - Staging
 variables:
   - name: INVESTMENT_TRACKER_SERVICE
-    value: ""
+    value: http://localhost:8080
   - name: JWT_TOKEN
     value: ""
   - name: EMAIL
-    value: ""
-  - name: PASSWORD
-    value: ""
+    value: rajtest@gmail.com
+  - secret: true
+    name: PASSWORD
