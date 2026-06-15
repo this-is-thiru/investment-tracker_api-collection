@@ -5,10 +5,10 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/upload-transactions?quarter=Q4"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/upload-transactions?quarter=Q1"
   params:
     - name: quarter
-      value: Q4
+      value: Q1
       type: query
     - name: email
       value: "{{EMAIL}}"
@@ -19,7 +19,7 @@ http:
       - name: file
         type: file
         value:
-          - /Users/pthirumalayadav/Desktop/NEW UPLOAD/TO BE/ZERODHA/Zerodha_2526.xlsx
+          - /Users/pthirumalayadav/Desktop/DEMAT P&L/FYERS.csv
   auth: inherit
 
 settings:

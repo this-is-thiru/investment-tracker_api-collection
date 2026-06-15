@@ -5,6 +5,6 @@ variables:
   - name: JWT_TOKEN
     value: ""
   - name: EMAIL
-    value: rajtest@gmail.com
+    value: pthirumalayadav@gmail.com
   - secret: true
     name: PASSWORD

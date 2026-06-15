@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-        "email":"rajtest@gmail.com",
+        "email":"{{EMAIL}}",
         "password": "password"
       }
 
@@ -21,7 +21,7 @@ runtime:
         let status = res.getStatus();
 
         let body = status!=200? null: res.getBody();
-        let token = body?.access_token;
+        let token = body?.data?.access_token;
         bru.setEnvVar('JWT_TOKEN', token);
 
 settings:
