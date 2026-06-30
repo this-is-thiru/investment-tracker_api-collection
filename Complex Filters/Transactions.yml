@@ -14,7 +14,7 @@ http:
     type: json
     data: |-
       {
-        "filters": [
+        "queryFilters": [
           // {
           //   "filterKey": "stock_code",
           //   "operation": "CONTAINS",

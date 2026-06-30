@@ -37,23 +37,23 @@ http:
           {
             "filterKey": "broker_name",
             "operation": "EQUALS",
-            "value": "ZERODHA",
-            "logicalOperation": "AND",
-            "expressionLogicalOperation": "AND",
-            "allowEmptyOrNull": false,
-            "caseSensitive": false,
-            "isDateField": false
-          },
-          {
-            "filterKey": "stock_code",
-            "operation": "EQUALS",
-            "value": "ITBEES",
+            "value": "UPSTOX",
             "logicalOperation": "AND",
             "expressionLogicalOperation": "AND",
             "allowEmptyOrNull": false,
             "caseSensitive": false,
             "isDateField": false
           }
+      //     {
+      //       "filterKey": "stock_code",
+      //       "operation": "EQUALS",
+      //       "value": "ITBEES",
+      //       "logicalOperation": "AND",
+      //       "expressionLogicalOperation": "AND",
+      //       "allowEmptyOrNull": false,
+      //       "caseSensitive": false,
+      //       "isDateField": false
+      //     }
           // {
           //     "filterKey": "transaction_date",
           //     "operation": "LESSER_THAN_OR_EQUAL_TO",

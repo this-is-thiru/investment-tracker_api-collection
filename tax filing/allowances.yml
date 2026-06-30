@@ -1,0 +1,18 @@
+info:
+  name: allowances
+  type: http
+  seq: 1
+
+http:
+  method: get
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax-planning/allowances?taxYear=2025-26"
+  params:
+    - name: taxYear
+      value: 2025-26
+      type: query
+
+settings:
+  encodeUrl: false
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
