@@ -1,0 +1,82 @@
+info:
+  name: Publish a rate card
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules"
+  body:
+    type: json
+    data: |-
+      {
+        "scheduleCode": "ZERODHA_EQ_DELIVERY_2026_04",
+        "brokerName": "ZERODHA",
+        "assetType": "EQUITY",
+        "segment": "DELIVERY",
+        "exchange": null,
+        "planCode": null,
+        "startDate": "2026-04-01",
+        "endDate": null,
+        "status": "ACTIVE",
+        "currency": "INR",
+        "requiresInstrumentProfile": false,
+        "sourceUrl": "https://zerodha.com/charges",
+        "verifiedOn": null,
+        "rules": [
+          { "code": "BROKERAGE", "displayName": "Brokerage", "category": "BROKERAGE",
+            "basis": "FLAT", "side": "BOTH", "events": ["BUY", "SELL"],
+            "flatAmount": 0.0, "rounding": "HALF_UP_2", "taxable": true, "active": true, "order": 10 },
+
+          { "code": "STT", "displayName": "Securities Transaction Tax", "category": "STATUTORY",
+            "basis": "TURNOVER", "amountBasis": "TURNOVER", "side": "BOTH", "events": ["BUY", "SELL"],
+            "rate": 0.1, "rounding": "HALF_UP_0", "taxable": false, "active": true, "order": 20 },
+
+          { "code": "DP", "displayName": "Depository participant charges", "category": "DEPOSITORY",
+            "basis": "SCOPED_FLAT", "side": "SELL", "events": ["SELL"],
+            "flatAmount": 13.5, "dedupeScope": "PER_SCRIP_PER_DAY",
+            "rounding": "HALF_UP_2", "taxable": true, "active": true, "order": 70 },
+
+          { "code": "GST", "displayName": "Goods and Services Tax", "category": "TAX",
+            "basis": "DERIVED", "side": "BOTH", "events": ["BUY", "SELL"],
+            "rate": 18.0, "baseCodes": ["BROKERAGE", "DP"],
+            "rounding": "HALF_UP_2", "taxable": false, "active": true, "order": 100 }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Publishes a rate card. Any card currently open for the same scope — broker, asset type, segment,
+  exchange, plan — is closed the day before this one starts, in the same transaction. Closing the
+  incumbent by hand first is neither necessary nor correct.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules`
+
+  **Authorisation:** `SUPER_USER`. A rate card decides what every user of the application is
+  charged, so being authenticated is not the same as being entitled to reprice other people's trades.
+
+  **Validation** — the card is rejected with 400, listing every problem and naming the rule each
+  belongs to, if any of these hold:
+  - a rule names a `code` that is not in the charge catalogue
+  - a rule declares both a rate and a flat amount, or neither
+  - a `DERIVED` rule's `baseCodes` are missing or name a code the card does not emit
+  - a rate, flat amount, minimum or maximum is negative
+  - two rules share a code, a slab has gaps, or a formula references a variable outside the allow-list
+  - the card declares no rules at all, has no start date, or ends before it begins
+  - it would start on or before the card it supersedes
+
+  **On rates:** every card shipped with the application carries `sourceUrl` and a null `verifiedOn`,
+  because the figures are placeholders. Set `verifiedOn` only once a human has compared each figure
+  against the broker's published page.
+
+  **Superseding does not change `status`.** The window closes; the record stays `ACTIVE` because a
+  superseded card must still price the trades inside its own window — a quarter uploaded in 2026 for
+  2024 resolves against the 2024 card.

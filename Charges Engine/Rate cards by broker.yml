@@ -1,0 +1,29 @@
+info:
+  name: Rate cards by broker
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules?broker=ZERODHA"
+  params:
+    - name: broker
+      value: "ZERODHA"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Every rate card on file for a broker, newest window first.
+
+  **Endpoint:**
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules?broker=ZERODHA`
+
+  A single card is fetched by its code at `/charge-schedules/{scheduleCode}` — the code, not a Mongo
+  id, because it is what the seed files, the validator and every stored charge row already carry.

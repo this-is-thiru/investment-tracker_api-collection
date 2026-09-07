@@ -1,0 +1,77 @@
+info:
+  name: Simulate a trade
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charges/simulate"
+  body:
+    type: json
+    data: |-
+      {
+        "brokerName": "ZERODHA",
+        "assetType": "EQUITY",
+        "segment": "DELIVERY",
+        "exchange": "NSE",
+        "event": "SELL",
+        "stockCode": "INFY",
+        "price": 1000,
+        "quantity": 100,
+        "transactionDate": "2025-06-02"
+      }
+
+      // A derivatives trade states its own bases rather than having turnover derived.
+      // An option is charged on premium; pricing it on notional is wrong by orders of magnitude.
+      // {
+      //   "brokerName": "ZERODHA",
+      //   "assetType": "EQUITY",
+      //   "segment": "INTRADAY",
+      //   "event": "BUY",
+      //   "stockCode": "NIFTY25JUN24000CE",
+      //   "price": 150,
+      //   "quantity": 1,
+      //   "lotSize": 75,
+      //   "transactionDate": "2025-06-02",
+      //   "baseAmounts": { "PREMIUM": 11250, "NOTIONAL": 1800000 }
+      // }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Prices a trade and records nothing. Use it to see what a trade would cost before placing it, and
+  to exercise the whole engine — resolver, calculators, modifiers, rounding — without a portfolio to
+  mutate.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/charges/simulate`
+
+  **Required fields:**
+  - `brokerName`, `assetType` — pick the rate card
+  - `event` — `BUY` or `SELL`. A charge applies to one side, not to both
+  - `transactionDate` — selects the rate card *in force on that date*. Required rather than defaulted:
+    a backfilled trade priced against today's rates returns a confident wrong number
+  - `quantity` greater than zero; `price` not negative (zero is valid — a bonus allotment is issued
+    free and still attracts charges)
+
+  **Optional fields:**
+  - `email` and `accountHolder` — supplied, scoped charges such as the depository fee are checked
+    against what that account was already charged that day, so the answer is what a *second* sale
+    would really cost. Omitted, every scoped charge is priced as a first occurrence
+  - `baseAmounts` — a map of `TURNOVER`, `NOTIONAL`, `PREMIUM`, `INTRINSIC`, `PRINCIPAL`. Omitted, it
+    is derived as price x quantity x lotSize
+  - `lotSize` (defaults to 1), `segment`, `exchange`, `planCode`, `orderId`, `corporateActionType`,
+    `attributes`
+
+  **Response:**
+  `scheduleCode`, `resolution`, the `lines` in the order they were applied, `amountByCode` and
+  `totalCharges`. `resolution` is populated even when nothing was charged: a zero total under
+  `NO_SCHEDULE` is a gap in the rate cards, while one under `CORPORATE_ACTION_EXEMPT` is correct.
+
+  **Authentication:** bearer token. Nothing is persisted by this call.

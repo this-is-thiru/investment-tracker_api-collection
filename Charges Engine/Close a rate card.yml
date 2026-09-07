@@ -1,0 +1,37 @@
+info:
+  name: Close a rate card
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/:scheduleCode/close?endDate=2026-03-31"
+  params:
+    - name: scheduleCode
+      value: "ZERODHA_EQ_DELIVERY_2025_04"
+      type: path
+    - name: endDate
+      value: "2026-03-31"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Withdraws a card without replacing it — for a broker that stops offering a plan, rather than
+  reprices it. Publishing a successor closes the incumbent on its own; this is for the case where
+  there is no successor.
+
+  The record stays usable: trades dated inside the closed window still resolve against it.
+
+  **Endpoint:**
+  `PATCH {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/:scheduleCode/close?endDate=yyyy-MM-dd`
+
+  **Authorisation:** `SUPER_USER`.
+
+  Answers 400 if `endDate` precedes the card's own start date.

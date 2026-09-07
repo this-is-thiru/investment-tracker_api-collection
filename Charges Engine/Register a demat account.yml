@@ -1,0 +1,47 @@
+info:
+  name: Register a demat account
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-accounts/user/:email"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "accountHolder": "self",
+        "brokerName": "ZERODHA",
+        "dematAccountId": "DEMAT-1",
+        "planCode": null,
+        "openedOn": "2024-01-01",
+        "amcFrequency": "ANNUALLY",
+        "status": "ACTIVE"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Registers a demat account so account-level charges — annual maintenance, account opening — have
+  something to bill against. Trade-level charges need no registration.
+
+  `accountHolder` matters beyond bookkeeping: a depository charge is levied per demat account, so
+  two holders selling the same scrip on the same day incur two separate debits.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/charge-accounts/user/:email`
+
+  The path owns the email; an `email` in the body is overwritten by it. `GET` on the same path lists
+  the accounts registered for a user.
+
+  `amcFrequency` is `ANNUALLY` or `QUARTERLY`.

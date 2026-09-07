@@ -1,0 +1,27 @@
+info:
+  name: Unverified rate cards
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/unverified"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  The cards whose rates nobody has checked against the broker's published page — those with no
+  `verifiedOn`.
+
+  Every card shipped with the application is currently one of these, which is the point: the figures
+  are placeholders and the engine's arithmetic is only as right as they are. This endpoint is the
+  worklist for making them real.
+
+  **Endpoint:**
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/unverified`

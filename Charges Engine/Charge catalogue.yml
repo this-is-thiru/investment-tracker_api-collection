@@ -1,0 +1,26 @@
+info:
+  name: Charge catalogue
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-catalogue"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  The registry of charge codes a rate card is allowed to name, sorted by code. Read this before
+  authoring a card: a rule naming a code that is not here is rejected at publish time.
+
+  Retired codes are withheld from this listing but stay resolvable, because historical charge rows
+  still carry them.
+
+  **Endpoint:**
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/charge-catalogue`

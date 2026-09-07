@@ -1,0 +1,42 @@
+info:
+  name: Run the AMC cycle
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charges/amc/impose?frequency=ANNUALLY&billedThrough=2025-12-31"
+  params:
+    - name: frequency
+      value: "ANNUALLY"
+      type: query
+    - name: billedThrough
+      value: "2025-12-31"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Bills every registered account of the given frequency that is not yet covered through the given
+  date, through the engine and against the rate card in force. Returns the accounts actually billed,
+  so a run can be seen rather than assumed.
+
+  Safe to re-run for the same period: an account already covered through that date is skipped. A
+  duplicate charge is indistinguishable from a legitimate one once written, so the guard is checked
+  twice — in the query and again per account.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/charges/amc/impose?frequency=ANNUALLY&billedThrough=yyyy-MM-dd`
+
+  **Authorisation:** `SUPER_USER`. One call bills every account of a frequency across every user.
+
+  **Not the same endpoint as `Broker Charges > AMC impose`.** That one bills from
+  `AssetManagementDetails` under the superseded implementation and stays live until the Phase C
+  cutover. Running both against the same period would charge twice. No AMC rate card ships yet, so
+  this endpoint has nothing to bill against until one is published.
