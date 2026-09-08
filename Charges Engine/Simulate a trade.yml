@@ -21,6 +21,24 @@ http:
         "transactionDate": "2025-06-02"
       }
 
+      // A mutual fund redemption drawn from lots of different ages. Exit load lives on the
+      // scheme's profile, is priced per lot, and applies to the young lot alone — so the older
+      // 600 units attract nothing and the answer is 1% of the younger lot's 40,000, not of the
+      // whole redemption. Without "lots" a perLot rule evaluates zero times and returns nothing.
+      // {
+      //   "brokerName": "ZERODHA",
+      //   "assetType": "MUTUAL_FUND",
+      //   "event": "SELL",
+      //   "stockCode": "PARAGPARIKHFLEXICAP",
+      //   "price": 100,
+      //   "quantity": 1000,
+      //   "transactionDate": "2025-06-02",
+      //   "lots": [
+      //     { "quantity": 600, "acquisitionDate": "2024-02-01", "price": 100 },
+      //     { "quantity": 400, "acquisitionDate": "2025-03-01", "price": 100 }
+      //   ]
+      // }
+
       // A derivatives trade states its own bases rather than having turnover derived.
       // An option is charged on premium; pricing it on notional is wrong by orders of magnitude.
       // {
@@ -66,6 +84,13 @@ docs: |-
     would really cost. Omitted, every scoped charge is priced as a first occurrence
   - `baseAmounts` — a map of `TURNOVER`, `NOTIONAL`, `PREMIUM`, `INTRINSIC`, `PRINCIPAL`. Omitted, it
     is derived as price x quantity x lotSize
+  - `lots` — the FIFO lots the disposal consumed, each `{quantity, acquisitionDate, price}`. Only
+    charges conditioned on holding period read them, exit load being the one that exists today.
+    Omitted, a `perLot` rule evaluates zero times and charges nothing — right for a purchase, wrong
+    for a redemption whose lots simply were not sent. Their quantities must add up to `quantity`
+    (within a unit's rounding, since fund units are fractional), no lot may be acquired after the
+    trade, and each needs an `acquisitionDate`. Every one of those is rejected rather than priced,
+    because each way of getting it wrong makes the charge *smaller* rather than making the call fail
   - `lotSize` (defaults to 1), `segment`, `exchange`, `planCode`, `orderId`, `corporateActionType`,
     `attributes`
 
