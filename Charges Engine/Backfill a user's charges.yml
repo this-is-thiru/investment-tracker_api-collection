@@ -1,0 +1,62 @@
+info:
+  name: Backfill a user's charges
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/charges/backfill/user/:email"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Prices the transactions a user already has and records the result, so the reconciliation report
+  has something to reconcile.
+
+  Shadow recording only fires on trades that flow through the live path *after*
+  `app.charges.shadow-recording` is turned on. Everything older carries no computed charge, which
+  leaves `GET /user-charges/user/:email/reconciliation` empty and `transactionsWithoutComputation`
+  equal to the user's whole history. This is what fills it in — and the entered figures it
+  reconciles against are ones the **user** actually typed, which no freshly driven test trade can
+  offer.
+
+  **Requires `SUPER_USER`.** It reprices somebody's entire trading history.
+
+  **⚠️ This writes.** One `user_charges` row per priced transaction — and nothing else. No cost
+  basis, no profit-and-loss figure and no transaction document is touched. Reversible by dropping
+  the rows it wrote.
+
+  **Safe to re-run.** A row is keyed on `{email, transactionId}` and replaced rather than appended,
+  so an operator unsure whether the first run finished can simply run it again.
+
+  **Reading the response:**
+
+  - `transactionsRead` — everything on file for the user.
+  - `priced` — how many reached the engine.
+  - `skipped` — never processed (`TEMPORARY`, `FAILED`), or missing a date, quantity or side. A
+    temporary transaction is one a corporate action is blocking; it has not happened yet, so pricing
+    it would record a charge for a trade that does not exist.
+  - `sellsWithNoLotsFound` — sells whose buys are not in the history. Any holding-period charge on
+    those prices at zero, so a non-zero count here caps how much the exit-load figures can be
+    trusted.
+  - `byResolution` — the count per `ChargeResolution`. Anything outside `RESOLVED` and
+    `CORPORATE_ACTION_EXEMPT` is a gap; `GET /user-charges/user/:email/gaps` lists them.
+
+  **FIFO lots are reconstructed, not read.** A transaction document does not record which lots a
+  sell consumed — the live path is handed them by `PortfolioService`'s walk over open holdings, and
+  that walk is destructive. The backfill replays the buys in date order per scrip, broker and
+  account holder to recover them. Without lots a `perLot` rule evaluates zero times, so a fund
+  redeemed inside its exit-load window would be backfilled as free.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/charges/backfill/user/:email`
