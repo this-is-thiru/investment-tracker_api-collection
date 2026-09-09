@@ -1,0 +1,56 @@
+info:
+  name: Reconciliation
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/reconciliation"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  What the engine computed against what the user entered, per trade, with the difference. This is
+  the report Phase B exists to produce: shadow recording accumulates computed charges beside the
+  user-entered ones without changing anything, and these deltas are what has to be understood
+  before the computed total is allowed near cost basis.
+
+  **Requires `app.charges.shadow-recording=true`.** With the shipped default of `false` nothing is
+  recorded through the trade path, so `rows` is empty and `transactionsWithoutComputation` equals
+  the user's whole transaction count.
+
+  **Reading the response:**
+
+  - `rows[].computed` — the engine's total for that trade.
+  - `rows[].entered` — `brokerCharges` as the user typed it on the transaction. `null` when no
+    transaction with that id is on file.
+  - `rows[].delta` — `computed - entered`, rounded to paise. `null` whenever the row is not
+    comparable.
+  - `rows[].comparable` — whether the two figures may legitimately be subtracted.
+  - `rows[].note` — why not, when they may not.
+
+  Two kinds of row are listed but excluded from the totals, because subtracting them produces a
+  number that reads as a defect and is not one:
+
+  1. **The computation did not resolve** (`NO_SCHEDULE`, `NO_INSTRUMENT_PROFILE`,
+     `NO_MATCHING_RULES`, `PROVISIONAL`). A trade in a period with no rate card computes zero for a
+     stated reason; counting it would read as the engine undercharging by the entire entered amount.
+  2. **The transaction is gone.** With no entered figure there is nothing to compare, and treating
+     the absence as zero would read as the engine overcharging by its whole total.
+
+  `unresolvedCount` and `transactionsWithoutComputation` are the two numbers to watch during a
+  rollout: the first says the seed data has gaps, the second says shadow recording has not reached
+  those trades.
+
+  **Endpoint:**
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/reconciliation`
