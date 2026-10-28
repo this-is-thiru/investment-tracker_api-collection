@@ -29,8 +29,7 @@ http:
           ]
         },
         "exDate": "2026-05-28",
-        "recordDate": "2026-05-28",
-        "date": "2026-05-28"
+        "recordDate": "2026-05-28"
       }
 
       // {
@@ -42,8 +41,7 @@ http:
       //   "priority": 0,
       //   "ratio": "1:1",
       //   "exDate": "2025-08-26",
-      //   "recordDate": "2025-08-26",
-      //   "date": "2025-08-26"
+      //   "recordDate": "2025-08-26"
       // }
 
       // {
@@ -55,8 +53,7 @@ http:
       //   "priority": 0,
       //   "ratio": "1:1",
       //   "exDate": "2024-10-28",
-      //   "recordDate": "2024-10-28",
-      //   "date": "2024-10-28"
+      //   "recordDate": "2024-10-28"
       // }
 
       // {
@@ -68,8 +65,7 @@ http:
       //   "priority": 0,
       //   "ratio": "1:2",
       //   "exDate": "2025-07-18",
-      //   "recordDate": "2025-07-18",
-      //   "date": "2025-07-18"
+      //   "recordDate": "2025-07-18"
       // }
   auth: inherit
 
