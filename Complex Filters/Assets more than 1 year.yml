@@ -68,7 +68,7 @@ docs: |-
 
   ``` json
   {
-    "filters": [
+    "queryFilters": [
       {
         "filterKey": "transaction_date",
         "operation": "LESSER_THAN_OR_EQUAL_TO",

@@ -111,7 +111,7 @@ docs: |-
 
   ``` json
   {
-    "filters": [
+    "queryFilters": [
       {
         "filterKey": "transaction_date",
         "operation": "GREATER_THAN",

@@ -1,5 +1,5 @@
 info:
-  name: Export | Stocks - Long/Short
+  name: Export | Stocks - bought after a date
   type: http
   seq: 6
 
@@ -18,7 +18,7 @@ http:
         "emailAddresses": [
           "{{EMAIL}}"
         ],
-        "filters": [
+        "queryFilters": [
           {
             "filterKey": "transaction_date",
             "operation": "GREATER_THAN",
