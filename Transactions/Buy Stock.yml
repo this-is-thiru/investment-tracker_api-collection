@@ -21,11 +21,9 @@ http:
       //     "price": 45.74,
       //     "quantity": 110,
       //     "assetType": "EQUITY",
-      //     "actorName": null,
       //     "transactionType": "BUY",
       //     "transactionDate": "2026-05-27",
-      //     "brokerCharges": 0.01,
-      //     "timeZoneId": "Asia/Kolkata"
+      //     "brokerCharges": 0.01
       //   }
 
       {
@@ -36,11 +34,9 @@ http:
           "price": 44.80,
           "quantity": 33,
           "assetType": "EQUITY",
-          "actorName": null,
           "transactionType": "BUY",
           "transactionDate": "2026-05-27",
-          "brokerCharges": 0.01,
-          "timeZoneId": "Asia/Kolkata"
+          "brokerCharges": 0.01
         }
   auth: inherit
 
@@ -74,11 +70,9 @@ docs: |-
   - `price` (number): The price per unit of the stock.
   - `quantity` (integer): The number of stock units purchased.
   - `assetType` (string): The type of asset. Example: `EQUITY`
-  - `actorName` (string): The name of the person performing the transaction.
   - `transactionType` (string): The type of transaction. For buying, use `BUY`.
   - `transactionDate` (string, ISO 8601): The date of the transaction. Example: `2025-07-01`
   - `brokerCharges` (number): The charges levied by the broker for the transaction.
-  - `timeZoneId` (string): The time zone identifier. Example: `IST`
 
   ---
 
@@ -96,11 +90,9 @@ docs: |-
     "price": 100,
     "quantity": 16,
     "assetType": "EQUITY",
-    "actorName": "Thiru",
     "transactionType": "BUY",
     "transactionDate": "2025-07-01",
-    "brokerCharges": 10,
-    "timeZoneId": "IST"
+    "brokerCharges": 10
   }
   ```
 

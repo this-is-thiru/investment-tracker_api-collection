@@ -19,7 +19,6 @@ http:
         "startDate": "2026-04-01",
         "endDate": null,
         "status": "ACTIVE",
-        "currency": "INR",
         "requiresInstrumentProfile": false,
         "sourceUrl": "https://zerodha.com/charges",
         "verifiedOn": null,

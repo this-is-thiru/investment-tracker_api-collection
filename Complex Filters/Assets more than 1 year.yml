@@ -14,7 +14,7 @@ http:
     type: json
     data: "{\r
 
-      \  \"filters\": [\r
+      \  \"queryFilters\": [\r
 
       \    {\r
 
@@ -64,7 +64,7 @@ docs: |-
       
 
   **Request Body Structure:**  
-  The body must include a `filters` array. Each filter object should follow this schema:
+  The body must include a `queryFilters` array. Each filter object should follow this schema:
 
   ``` json
   {
