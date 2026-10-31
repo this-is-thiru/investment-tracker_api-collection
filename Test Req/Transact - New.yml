@@ -22,7 +22,7 @@ http:
           "brokerName": "ZERODHA",
           "assetType": "EQUITY",
           "price": 20.00,
-          "quantity": 40.00,
+          "quantity": 30.00,
           "transactionType": "SELL",
           "accountType": "SELF",
           "transactionDate": "2025-10-23"
@@ -38,7 +38,15 @@ http:
             "assetType": "EQUITY",
             "transactionDate": "2025-10-01",
             "accountType": "SELF",
-            "corporateActionType": "DIVIDEND"
+            "corporateActionType": "DIVIDEND",
+            "brokerCharges": 0.0,
+            "miscCharges": 0.0,
+            "allocatedBuyCharges": 0.0,
+            "allocatedBuyMiscCharges": 0.0,
+            "buyTransactionIds": [],
+            "sellTransactionIds": [],
+            "corporateActions": [],
+            "orderTimeQuantities": []
           },
           {
             "stockCode": "TESTCODE1",
@@ -50,7 +58,15 @@ http:
             "assetType": "EQUITY",
             "transactionDate": "2025-10-01",
             "accountType": "SELF",
-            "corporateActionType": "DIVIDEND"
+            "corporateActionType": "DIVIDEND",
+            "brokerCharges": 0.0,
+            "miscCharges": 0.0,
+            "allocatedBuyCharges": 0.0,
+            "allocatedBuyMiscCharges": 0.0,
+            "buyTransactionIds": [],
+            "sellTransactionIds": [],
+            "corporateActions": [],
+            "orderTimeQuantities": []
           }
         ]
       }

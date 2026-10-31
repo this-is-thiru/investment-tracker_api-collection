@@ -15,7 +15,7 @@ http:
         "assetType": "EQUITY",
         "segment": "DELIVERY",
         "exchange": null,
-        "planCode": null,
+        "planCode": "TEST_PLAN",
         "startDate": "2026-04-01",
         "endDate": null,
         "status": "ACTIVE",
@@ -25,21 +25,21 @@ http:
         "rules": [
           { "code": "BROKERAGE", "displayName": "Brokerage", "category": "BROKERAGE",
             "basis": "FLAT", "side": "BOTH", "events": ["BUY", "SELL"],
-            "flatAmount": 0.0, "rounding": "HALF_UP_2", "taxable": true, "active": true, "order": 10 },
+            "flatAmount": 0.0, "rounding": "HALF_UP_2", "perLot": false, "appliesToCorporateActions": false, "taxable": true, "active": true, "order": 10 },
 
           { "code": "STT", "displayName": "Securities Transaction Tax", "category": "STATUTORY",
             "basis": "TURNOVER", "amountBasis": "TURNOVER", "side": "BOTH", "events": ["BUY", "SELL"],
-            "rate": 0.1, "rounding": "HALF_UP_0", "taxable": false, "active": true, "order": 20 },
+            "rate": 0.1, "rounding": "HALF_UP_0", "perLot": false, "appliesToCorporateActions": false, "taxable": false, "active": true, "order": 20 },
 
           { "code": "DP", "displayName": "Depository participant charges", "category": "DEPOSITORY",
             "basis": "SCOPED_FLAT", "side": "SELL", "events": ["SELL"],
             "flatAmount": 13.5, "dedupeScope": "PER_SCRIP_PER_DAY",
-            "rounding": "HALF_UP_2", "taxable": true, "active": true, "order": 70 },
+            "rounding": "HALF_UP_2", "perLot": false, "appliesToCorporateActions": false, "taxable": true, "active": true, "order": 70 },
 
           { "code": "GST", "displayName": "Goods and Services Tax", "category": "TAX",
             "basis": "DERIVED", "side": "BOTH", "events": ["BUY", "SELL"],
             "rate": 18.0, "baseCodes": ["BROKERAGE", "DP"],
-            "rounding": "HALF_UP_2", "taxable": false, "active": true, "order": 100 }
+            "rounding": "HALF_UP_2", "perLot": false, "appliesToCorporateActions": false, "taxable": false, "active": true, "order": 100 }
         ]
       }
   auth: inherit
