@@ -1,0 +1,29 @@
+info:
+  name: Create a Profile
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Self",
+        "pan": "ABCDE1234F",
+        "kind": "INDIVIDUAL",
+        "dateOfBirth": "1985-06-01",
+        "residentialStatus": "RESIDENT"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
