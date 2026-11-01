@@ -1,0 +1,38 @@
+info:
+  name: Record a Property Sale
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/properties/user/:email/sales"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "propertyName": "Plot 7",
+        "acquiredOn": "2015-06-01",
+        "costRupees": 4000000,
+        "acquisitionExpenses": {
+          "STAMP_DUTY": 280000,
+          "REGISTRATION": 40000,
+          "BROKERAGE": 40000
+        },
+        "transferredOn": "2025-09-01",
+        "considerationRupees": 10000000,
+        "transferExpenses": {
+          "BROKERAGE": 100000,
+          "LEGAL_FEE": 20000
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
