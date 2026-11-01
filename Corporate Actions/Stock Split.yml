@@ -4,20 +4,20 @@ info:
   seq: 6
 
 http:
-  method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/stocks/perform/corporate-action"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/add"
   body:
     type: json
     data: |-
       {
-          "action": "STOCK_SPLIT",
+          "type": "STOCK_SPLIT",
           "stockCode": "RELIANCE",
-          "splitRatio": "2:1",
-          "recordDate": "2024-10-28"
+          "stockName": "Reliance Industries",
+          "assetType": "EQUITY",
+          "ratio": "2:1",
+          "recordDate": "2024-10-28",
+          "exDate": "2024-10-28",
+          "priority": 1
       }
   auth: inherit
 
