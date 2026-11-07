@@ -1,0 +1,22 @@
+info:
+  name: Request Erasure of a Profile
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/erasure"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: profileId
+      value: "<profile id from Create a Profile>"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
