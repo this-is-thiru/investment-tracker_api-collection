@@ -20,3 +20,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |
+  Take your copy first: once asked, the profile cannot be read. Read its drafts, revisions and computations; the PDF
+  report replaces them as the copy when W-123 is built (W-247 C2a, D-477).
