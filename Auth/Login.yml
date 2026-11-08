@@ -30,4 +30,4 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: This endpoint is used to authenticate a user. Provide the user's email and password in the request body using the variables {{EMAIL}} and {{PASSWORD}}. Upon successful authentication, a JWT token is returned in the response. Use this token for subsequent authenticated requests.
+docs: This endpoint is used to authenticate a user. Provide the user's email and password in the request body using the variables {{EMAIL}} and {{PASSWORD}}. Upon successful authentication, a JWT token is returned in the response. Use this token for subsequent authenticated requests. The response also carries `privacy_notice` (the page, `/privacy`) and `privacy_notice_version`; an account registered before W-250 is recorded as given the notice at its first sign-in (DPDP Act s.5(2)).

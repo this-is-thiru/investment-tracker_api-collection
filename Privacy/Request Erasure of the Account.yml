@@ -22,3 +22,4 @@ docs: |
   Take your copy first: once asked, nothing in the account can be read (W-237d). Download the portfolio's assets and
   transactions (`POST /portfolio/user/{email}/stocks/download`, the only part that can be downloaded) and read each
   tax-planning profile's drafts, revisions and computations. The account is erased a year after the request (W-247 C2a).
+  Asking also withdraws your consent (W-250 C3a; DPDP Act s.6(4)): all processing stops at once.
