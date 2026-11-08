@@ -1,0 +1,31 @@
+info:
+  name: 5 Compute old regime
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/compute"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "regime": "FIRST_SCHEDULE_RATES"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Compare /tax/bill with the persona's bill: it is before rounding to the nearest ten. The final amount is rounded and adds interest and fees for the day you compute, so it varies.

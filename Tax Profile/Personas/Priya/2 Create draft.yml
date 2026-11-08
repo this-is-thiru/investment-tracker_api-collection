@@ -1,0 +1,31 @@
+info:
+  name: 2 Create draft
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/workspaces/2026/drafts"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: profileId
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "label": "Priya"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  TY 2026-27. Copy the draft's id into the next requests.

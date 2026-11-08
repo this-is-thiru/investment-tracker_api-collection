@@ -1,0 +1,35 @@
+info:
+  name: 1 Create profile
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Priya",
+        "pan": "AAAPP2222B",
+        "kind": "INDIVIDUAL",
+        "dateOfBirth": "1985-06-15",
+        "residentialStatus": "RESIDENT",
+        "holdsPortfolio": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-2, DR 08 T8-1: two employers, each granting the standard deduction. Bill: new regime 2,14,500.
+  
+  A PAN is registered once per database: if this one is taken, change it to another of the form AAAAA9999A.

@@ -1,0 +1,35 @@
+info:
+  name: 1 Create profile
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Anand",
+        "pan": "AAAPA3333C",
+        "kind": "INDIVIDUAL",
+        "dateOfBirth": "1964-09-30",
+        "residentialStatus": "RESIDENT",
+        "holdsPortfolio": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-3, 62, retired: pension 6,00,000 (entered as BASIC until W-242), interest 1,04,000, health insurance 40,000. Bill: old regime 23,712; new regime 0.
+  
+  A PAN is registered once per database: if this one is taken, change it to another of the form AAAAA9999A.

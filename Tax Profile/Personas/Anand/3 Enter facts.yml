@@ -1,0 +1,112 @@
+info:
+  name: 3 Enter facts
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  headers:
+    - name: If-Match
+      value: '"rev-0"'
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "op": "add",
+          "path": "/entered/employments/-",
+          "value": {
+            "components": [
+              {
+                "code": {
+                  "value": "BASIC"
+                },
+                "annualAmount": {
+                  "amountInRupees": 600000
+                }
+              }
+            ],
+            "termsIncludeDearnessAllowance": false,
+            "employerKind": "OTHER",
+            "dearnessAllowanceCountsForRetirement": false,
+            "companyEmployer": null
+          }
+        },
+        {
+          "op": "add",
+          "path": "/entered/healthPayments/-",
+          "value": {
+            "kind": "INSURANCE_PREMIUM",
+            "coversAssessee": true,
+            "familyMembers": [],
+            "amount": {
+              "amountInRupees": 40000
+            },
+            "paidInCash": false,
+            "relevantTaxYears": 1
+          }
+        },
+        {
+          "op": "add",
+          "path": "/entered/otherSourceItems/-",
+          "value": {
+            "kind": "SAVINGS_DEPOSIT_INTEREST",
+            "received": {
+              "amountInRupees": 14000
+            },
+            "bankerCommission": {
+              "amountInRupees": 0
+            },
+            "interestExpense": {
+              "amountInRupees": 0
+            },
+            "otherExpenditure": {
+              "amountInRupees": 0
+            },
+            "payableOutsideIndiaUntaxed": false
+          }
+        },
+        {
+          "op": "add",
+          "path": "/entered/otherSourceItems/-",
+          "value": {
+            "kind": "DEPOSIT_INTEREST",
+            "received": {
+              "amountInRupees": 90000
+            },
+            "bankerCommission": {
+              "amountInRupees": 0
+            },
+            "interestExpense": {
+              "amountInRupees": 0
+            },
+            "otherExpenditure": {
+              "amountInRupees": 0
+            },
+            "payableOutsideIndiaUntaxed": false
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/filing/dueDate",
+          "value": "2027-07-31"
+        }
+      ]
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Send once: a second send adds the lists again. If-Match is the new draft's revision, rev-0. The due date is an input the computation asks for, not a statement of the law.
