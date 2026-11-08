@@ -19,6 +19,7 @@ http:
       {
         "movable": ["HRA", "BASIC"],
         "movableFunds": ["NOTIFIED_PENSION_SCHEME"],
+        "contributions": ["EMPLOYEE_NPS"],
         "residual": "SPECIAL_ALLOWANCE",
         "cashFloor": "0",
         "verificationBreadth": 6,
