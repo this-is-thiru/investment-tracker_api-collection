@@ -1,0 +1,31 @@
+info:
+  name: Optimise a Draft
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/optimise"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "movable": ["HRA"],
+        "residual": "SPECIAL_ALLOWANCE",
+        "cashFloor": "0",
+        "verificationBreadth": 6
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
