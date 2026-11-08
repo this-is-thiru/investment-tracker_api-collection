@@ -14,8 +14,6 @@ http:
 
       \  \"password\": \"password\",\r
 
-      \  \"role\": \"USER\",\r
-
       \  \"privacyNoticeVersion\": \"{{PRIVACY_NOTICE_VERSION}}\"\r
 
       }"
@@ -33,16 +31,15 @@ docs: |-
   **Endpoint:** `POST {{INVESTMENT_TRACKER_SERVICE}}/auth/register`
 
   **Purpose:**
-  This endpoint creates a new user account by accepting user details in the request body. It is used during user onboarding to register a user with the specified credentials and role.
+  This endpoint creates a new user account by accepting user details in the request body. It is used during user onboarding to register a user with the specified credentials. Every account registered is a `USER`; a role above it is granted only by the owner (W-255).
 
   **Request Body Parameters:**
   - `email` (string, required): The user's email address.
   - `password` (string, required): The user's password.
-  - `role` (string, required): The role assigned to the user (e.g., 'USER').
+  - `role` is not accepted: a body naming it is refused with 400 and nothing is stored (W-255).
   - `privacyNoticeVersion` (string, required): the `version` of the privacy notice the person read before consenting (W-250;
     DPDP Act s.5(1), s.6(10)). Run *Privacy / Read the Privacy Notice as JSON* first: it stores the version as
     `{{PRIVACY_NOTICE_VERSION}}`. A missing or older version is refused with 400, and nothing is stored.
-  - `username` (string, optional): The user's display name (if supported by the backend).
 
   **Note:**
   - This request is similar to the 'Auth - register' request in the collection and follows the same structure for user registration.
@@ -52,9 +49,7 @@ docs: |-
   {
     "email": "user@example.com",
     "password": "yourPassword",
-    "role": "USER",
-    "privacyNoticeVersion": "<version from GET /privacy/rights>",
-    "username": "optionalUsername"
+    "privacyNoticeVersion": "<version from GET /privacy/rights>"
   }
   ```
 
