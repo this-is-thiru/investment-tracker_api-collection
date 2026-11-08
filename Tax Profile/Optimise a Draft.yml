@@ -22,8 +22,10 @@ http:
         "residual": "SPECIAL_ALLOWANCE",
         "cashFloor": "0",
         "verificationBreadth": 6,
-        "employerShareFollowsBasic": true,
-        "employeeShareFollowsBasic": true
+        "providentFund": {
+          "employerShareFollowsBasic": true,
+          "employeeShareFollowsBasic": true
+        }
       }
   auth: inherit
 
