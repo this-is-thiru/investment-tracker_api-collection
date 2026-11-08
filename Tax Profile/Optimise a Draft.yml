@@ -18,6 +18,7 @@ http:
     data: |-
       {
         "movable": ["HRA"],
+        "movableFunds": ["NOTIFIED_PENSION_SCHEME"],
         "residual": "SPECIAL_ALLOWANCE",
         "cashFloor": "0",
         "verificationBreadth": 6
