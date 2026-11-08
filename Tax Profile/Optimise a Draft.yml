@@ -17,7 +17,7 @@ http:
     type: json
     data: |-
       {
-        "movable": ["HRA"],
+        "movable": ["HRA", "BASIC"],
         "movableFunds": ["NOTIFIED_PENSION_SCHEME"],
         "residual": "SPECIAL_ALLOWANCE",
         "cashFloor": "0",
