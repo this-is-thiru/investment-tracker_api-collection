@@ -30,6 +30,6 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-3, 62, retired: pension 6,00,000 (entered as BASIC until W-242), interest 1,04,000, health insurance 40,000. Bill: old regime 23,712; new regime 0.
+  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-3, 62, retired: pension 6,00,000 (UNCOMMUTED_PENSION: salary, with the standard deduction), interest 1,04,000, health insurance 40,000. Bill: old regime 23,712; new regime 0.
   
   A PAN is registered once per database: if this one is taken, change it to another of the form AAAAA9999A.

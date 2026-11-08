@@ -27,7 +27,7 @@ http:
             "components": [
               {
                 "code": {
-                  "value": "BASIC"
+                  "value": "UNCOMMUTED_PENSION"
                 },
                 "annualAmount": {
                   "amountInRupees": 600000
