@@ -19,7 +19,7 @@ http:
         "kind": "INDIVIDUAL",
         "dateOfBirth": "1995-09-30",
         "residentialStatus": "RESIDENT",
-        "holdsPortfolio": false
+        "holdsPortfolio": true
       }
   auth: inherit
 
@@ -30,6 +30,8 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-1, 31, Bengaluru, CTC 28,00,000. His listed-equity gains are not here: a draft holds no gains, they come from the portfolio (W-241a). Bill: new regime 3,71,467.20; old regime 4,56,830.40.
+  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-1, 31, Bengaluru, CTC 28,00,000, with listed equity sold on 2026-09-01: a long-term lot (gain 1,49,922.34 after charges) and a short-term lot (39,960.68). Bill: new regime 3,83,017.98; old regime 4,68,381.18.
+  
+  Use an account of this persona's own: only one profile per account may hold the portfolio, and the trades are read from the account's portfolio. Seed the rate cards first.
   
   A PAN is registered once per database: if this one is taken, change it to another of the form AAAAA9999A.

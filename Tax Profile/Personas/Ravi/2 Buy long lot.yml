@@ -1,0 +1,37 @@
+info:
+  name: 2 Buy long lot
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction/v2"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "DEMOLONG",
+        "stockName": "Demo listed share",
+        "exchangeName": "NSE",
+        "brokerName": "ZERODHA",
+        "price": 250000,
+        "assetType": "EQUITY",
+        "quantity": 1,
+        "transactionType": "BUY",
+        "transactionDate": "2025-04-01",
+        "brokerCharges": 0
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  A V2 trade on Zerodha, NSE delivery, priced by the seeded rate cards (deploy runbook §1B); the charges entered are 0 because the cards compute them. The long lot is bought on 2025-04-01, the first day a card prices, rather than the persona's 2024-04-01, so that the STT paid on it is on record (W-241a C1a). Send once.

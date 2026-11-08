@@ -19,7 +19,7 @@ http:
         "kind": "INDIVIDUAL",
         "dateOfBirth": "1985-06-15",
         "residentialStatus": "RESIDENT",
-        "holdsPortfolio": false
+        "holdsPortfolio": true
       }
   auth: inherit
 
@@ -30,6 +30,8 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-4, high earner, basic pay 45,75,000. Her long-term gain is not here (W-241a), so she stays below 50,00,000 and shows no surcharge until it is. Bill: new regime 9,67,200; old regime 12,16,800.
+  Send the requests in order, once, on a new draft; copy profileId and draftId along. PR-4, high earner, basic pay 45,75,000 and a long-term gain on listed equity of 5,49,739.28 after charges, so her total income is just above 50,00,000: the surcharge applies and its marginal relief binds. Bill: new regime 10,58,627.06; old regime 13,26,427.06.
+  
+  Use an account of this persona's own: only one profile per account may hold the portfolio, and the trades are read from the account's portfolio. Seed the rate cards first.
   
   A PAN is registered once per database: if this one is taken, change it to another of the form AAAAA9999A.

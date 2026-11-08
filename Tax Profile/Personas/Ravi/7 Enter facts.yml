@@ -1,7 +1,7 @@
 info:
-  name: 3 Enter facts
+  name: 7 Enter facts
   type: http
-  seq: 3
+  seq: 7
 
 http:
   method: PATCH

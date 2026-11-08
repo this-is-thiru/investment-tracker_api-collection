@@ -1,7 +1,7 @@
 info:
-  name: 4 Compute new regime
+  name: 6 Compute new regime
   type: http
-  seq: 4
+  seq: 6
 
 http:
   method: POST
