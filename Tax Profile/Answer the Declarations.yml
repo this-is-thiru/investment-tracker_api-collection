@@ -1,0 +1,49 @@
+info:
+  name: Answer the Declarations
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  headers:
+    - name: If-Match
+      value: '"rev-0"'
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "op": "add",
+          "path": "/filing/declarations",
+          "value": {
+            "DIRECTOR_IN_COMPANY": {
+              "@type": "YesNo",
+              "yes": false
+            },
+            "AGRICULTURAL_INCOME": {
+              "@type": "Amount",
+              "amount": {
+                "amountInRupees": 0
+              }
+            }
+          }
+        }
+      ]
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Answers some of the year's questions in a draft (W-090a2). Codes come from "List the Declarations"; a yes-or-no question takes {"@type": "YesNo", "yes": …}, an amount question {"@type": "Amount", "amount": {"amountInRupees": …}}. A question left out is unanswered, never a no. A code the draft's year does not ask, or an answer of the wrong kind, is refused with 400 naming the question. If-Match is the draft's current revision. Nothing here changes a figure yet: which ITR form each answer bars is W-090c.
