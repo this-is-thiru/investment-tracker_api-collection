@@ -1,0 +1,31 @@
+info:
+  name: Held Assets by Term
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/held-assets"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: profileId
+      value: "<profile id from Create a Profile>"
+      type: path
+    - name: asOf
+      value: "2026-11-06"
+      type: query
+    - name: term
+      value: "LONG_TERM"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  The lots the profile still holds, each with the term a sale on asOf would have by the year's RS-CG-TERM rows (W-262), for the profile that holds the portfolio. asOf is yyyy-MM-dd and is today when left out; term (LONG_TERM or SHORT_TERM) lists only those lots. Each lot gives stock, broker, account holder, quantity, acquired on, term, the rule row, its months, and longTermFrom, the first day a sale is long-term. A lot the rows give no term for carries a note saying why and is left out under a term filter; a lot whose turning date falls in a tax year no rule pack ships for carries a note and no date. totals gives each listed stock's long-term and short-term quantity and the quantity with no term, over all of the stock's lots. No gain or tax is computed. An asOf in a tax year no pack ships for answers 400.

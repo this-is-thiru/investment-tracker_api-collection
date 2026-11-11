@@ -1,0 +1,31 @@
+info:
+  name: Capital Gains of a Year
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/capital-gains/:taxYear"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: profileId
+      value: "<profile id from Create a Profile>"
+      type: path
+    - name: taxYear
+      value: "2026"
+      type: path
+    - name: asOf
+      value: "2026-11-06"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  What the profile that holds the portfolio sold in the tax year, as the year's rows read it (W-160g): each bucket with its term, the row that decided it and each charge's limb. taxYear is the start year as a whole number (2026 for 2026-27); 2026-27 answers 400 (W-263). With asOf, held also lists each held lot's term if sold that day; "Held Assets by Term" gives that view in full.
