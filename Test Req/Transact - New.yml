@@ -72,6 +72,13 @@ http:
       }
   auth: inherit
 
+docs: |-
+  **Purpose:**
+  A test hook: runs the V2 sell allocation over the lots in the body and writes profit and loss, charge records and
+  trade outcomes for them. It saves none of the lot changes (B-9).
+
+  **Authorisation:** `SUPER_USER` (W-268, D-553); an ordinary user gets 403.
+
 settings:
   encodeUrl: true
   timeout: 0
