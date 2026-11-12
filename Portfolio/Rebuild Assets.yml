@@ -1,15 +1,18 @@
 info:
-  name: Rebuild Assets (dry run)
+  name: Rebuild Assets
   type: http
   seq: 9
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild?dryRun=true"
   params:
     - name: email
       value: "{{EMAIL}}"
       type: path
+    - name: dryRun
+      value: "true"
+      type: query
   auth: inherit
 
 settings:
@@ -21,10 +24,12 @@ settings:
 docs: |-
   **Purpose:**
   Replays one user's transactions into lots and compares them with the stored `assets`, lot against lot (W-283a2,
-  D-582). **Read-only:** nothing is written. The write, with `dryRun` defaulting to `true`, is W-283a3.
+  D-582); with `dryRun=false`, replaces the stored lots with them (W-283a3, D-586). `dryRun` defaults to `true`.
+  A paired lot keeps its id, order times, action list and creation; others get new ids and are listed in `newLots`.
+  Run the dry run first and read it (runbook §2.12).
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild?dryRun=true`
 
   **Authorisation:** `SUPER_USER`; a user asking for their own gets 403.
 
