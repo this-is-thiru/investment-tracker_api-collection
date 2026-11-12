@@ -35,8 +35,8 @@ docs: |-
 
   **Read:** `lotsDiffering`, then each entry of `lots` with `differingFields` — `stored` and `rebuilt` give quantity,
   price, broker and misc charges, the allocated charges and the corporate-action type. The lists name what the replay
-  read from elsewhere for a trade stored before its flow was recorded (`shapeFromStoredLots`, `shapeNotFound`,
-  `saleFlowFromOutcomes`, `saleFlowUnknown`), the splits and demergers replayed (`actionsApplied`) or left
+  read from the stored lots for a buy stored before its flow was recorded (`shapeFromStoredLots`, `shapeNotFound`),
+  the splits and demergers replayed (`actionsApplied`) or left
   pending (`actionsPending`), and the trades still waiting (`temporariesSkipped`).
 
   Answers 400 if a sale finds less held than it sold, naming the sale and the shortfall.
