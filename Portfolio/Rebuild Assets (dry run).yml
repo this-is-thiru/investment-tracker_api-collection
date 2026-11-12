@@ -1,0 +1,37 @@
+info:
+  name: Rebuild Assets (dry run)
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Replays one user's transactions into lots and compares them with the stored `assets`, lot against lot (W-283a2,
+  D-582). **Read-only:** nothing is written. The write, with `dryRun` defaulting to `true`, is W-283a3.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild`
+
+  **Authorisation:** `SUPER_USER`; a user asking for their own gets 403.
+
+  **Read:** `lotsDiffering`, then each entry of `lots` with `differingFields` — `stored` and `rebuilt` give quantity,
+  price, broker and misc charges, the allocated charges and the corporate-action type. The lists name what the replay
+  read from elsewhere for a trade stored before its flow was recorded (`shapeFromStoredLots`, `shapeNotFound`,
+  `saleFlowFromOutcomes`, `saleFlowUnknown`), the splits and demergers replayed (`actionsApplied`) or left
+  pending (`actionsPending`), and the trades still waiting (`temporariesSkipped`).
+
+  Answers 400 if a sale finds less held than it sold, naming the sale and the shortfall.
