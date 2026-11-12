@@ -1,0 +1,36 @@
+info:
+  name: Correct Segments
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/transactions/segment/correct?dryRun=true"
+  params:
+    - name: dryRun
+      value: "true"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Restores the segment that transactions and outcome rows stored before W-292 / W-295 lost, from what stored data
+  records of it (W-297, D-599): a transaction from its BUY or SELL charge row; an outcome row's `segment` and
+  `sell_segment` from its sale transaction, or its own `sell_segment`; its `buy_segment` from its holding's buys on
+  its buy date where they agree. `dryRun` defaults to `true`. One-time per database (runbook §2.14); removed after
+  use (W-299, WL-46).
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/transactions/segment/correct?dryRun=true`
+
+  **Authorisation:** `SUPER_USER`; anyone else gets 403.
+
+  **Read:** `transactionsCorrected`, `rowsCorrected`, `users` (per user: `transactions`, `rows`) and
+  `rowsWithMixedBuys` (rows whose buys that day disagree, left as stored). Then, per user: §2.12 when `transactions`
+  > 0, and §2.11.
