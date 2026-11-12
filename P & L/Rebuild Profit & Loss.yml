@@ -1,0 +1,42 @@
+info:
+  name: Rebuild Profit & Loss
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/profit-and-loss/rebuild?dryRun=true"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: dryRun
+      value: "true"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Recomputes one user's `profit_and_loss` from the rows their trades stored, after a correction to their
+  `transactions` (W-283, D-575). Gains come from `trade_outcomes`, charges from the `user_charges` rows of buys and
+  sales, as recorded; nothing is priced again. Only `profit_and_loss` is rebuilt, not `assets` (W-283a).
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/profit-and-loss/rebuild?dryRun=true`
+
+  **Authorisation:** `SUPER_USER`; a user asking for their own gets 403.
+
+  **Dry run first:** `dryRun` defaults to `true`, and the report then lists, per financial year, the stored and the
+  rebuilt totals (`purchaseAmountRupees`, `sellAmountRupees`, `profitRupees`, `brokerageRupees`,
+  `miscChargesRupees`, `chargesRupees`) without writing. `dryRun=false` replaces every document the user has; a
+  second run writes the same.
+
+  **V1 trades:** their recorded charges are folded too, which V1 never did, so `chargesRupees` can rise for them.
+
+  Answers 400, naming the transactions, if a charge row names a transaction that is not stored.
