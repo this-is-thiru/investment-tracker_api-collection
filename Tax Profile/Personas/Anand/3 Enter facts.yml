@@ -112,3 +112,5 @@ docs: |-
   Send once: a second send adds the lists again. If-Match is the new draft's revision, rev-0. The due date is an input the computation asks for, not a statement of the law.
 
   An item in `otherSourceItems` may carry `receivedOn` (`yyyy-MM-dd`), the day it was received. Only a dividend's is read, by the relief from deferment interest (s.425(4) / s.234C; W-112a). A dividend without it gets no relief, as if it had arisen by every instalment date, and the computation says so. Anand's items are interest, so they carry none.
+
+  `/filing/refundGrantedOn` (`yyyy-MM-dd`, optional) is the day a refund was granted. It ends the interest the Government adds to a refund (s.437 / s.244A; W-112b), shown as `interestOnRefund` and never in the amount payable. Without it, the interest runs to the day of the computation, as if the refund were granted then.
