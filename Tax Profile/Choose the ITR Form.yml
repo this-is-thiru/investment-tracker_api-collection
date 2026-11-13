@@ -1,0 +1,29 @@
+info:
+  name: Choose the ITR Form
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/itr-form"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "regime": "NEW_TAX_REGIME",
+        "returnKind": "S263_1"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
