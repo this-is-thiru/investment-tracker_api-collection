@@ -29,3 +29,5 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+docs: |-
+  **Authorisation:** `SUPER_USER` (W-317). Corporate actions are shared by every user, so only an administrator adds, reprioritises or performs them.
