@@ -110,3 +110,5 @@ settings:
 
 docs: |-
   Send once: a second send adds the lists again. If-Match is the new draft's revision, rev-0. The due date is an input the computation asks for, not a statement of the law.
+
+  An item in `otherSourceItems` may carry `receivedOn` (`yyyy-MM-dd`), the day it was received. Only a dividend's is read, by the relief from deferment interest (s.425(4) / s.234C; W-112a). A dividend without it gets no relief, as if it had arisen by every instalment date, and the computation says so. Anand's items are interest, so they carry none.
