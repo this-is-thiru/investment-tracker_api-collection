@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/search"
   params:
     - name: email
       value: "{{EMAIL}}"
@@ -79,7 +79,7 @@ docs: |-
   This request allows you to filter a user's portfolio transactions based on customizable criteria. It is designed to provide flexible querying of transaction records, enabling users to retrieve only the transactions that match specific filters such as transaction date, stock code, and other attributes.
 
   **Endpoint:**  
-  POST `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/request2`
+  POST `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/search`
 
   **Request Body Structure:**
 
