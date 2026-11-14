@@ -26,3 +26,9 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Computes the draft under the regime given and stores the computation. Each line of tax.trace carries in and out (the
+  line's figures, where they are money) and explanation (F37, W-116): the line in plain language — what the figure is,
+  which limit set it and that raising the other limits alone would not change it — from the pack's content layer
+  (content/explanations.json). A rule with no sentence yet shows its rule id; W-325 writes the rest.
