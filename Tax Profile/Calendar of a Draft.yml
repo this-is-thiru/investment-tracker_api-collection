@@ -27,5 +27,7 @@ docs: |-
   interest and fees taking the action would save, the draft computed twice as of measuredAsOf (the later of the due
   date and today). A past entry shows paidByThen or furnishedOn. Under the old regime a DEDUCTION_PAID_BY entry on the
   year's last day gives Schedule XV's room (amountToPay), what counted (paidByThen) and the tax filling it saves
-  (costOfMissing — tax, not interest; W-114a). Entries overlap; their costs do not add up. Stored
+  (costOfMissing — tax, not interest; W-114a). A REGIME_ELECTION entry on the due date names the regime opting out
+  reaches (and its form, where made in one) and the tax staying in the default costs (W-114b). Entries overlap; their
+  costs do not add up. Stored
   nowhere. 400 where the draft is not this account's or states no due date.
