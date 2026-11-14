@@ -1,0 +1,32 @@
+info:
+  name: Completeness of a Draft
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/completeness"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  What the draft does not yet reflect, ranked by what it is worth (F33, W-115). Each item's worth is the tax entering it
+  would take off, the draft computed twice: Schedule XV's room, the assessee's and the parents' health cover, own NPS's
+  s.124(3) room, and rent — house rent allowance where it is received (with no home entered, priced at each location
+  band, the one saving most named in location), else rent paid under s.134. A rent item states rentNeeded, the least
+  rent for the year that earns it. Items worth nothing in the regime are dropped; top holds the five worth most,
+  others the rest, topWorth their sum — the items overlap, so entering all need not save it. Income the draft leaves
+  out, which would raise the tax, is not measured yet (W-324) and notIncluded says so. Stored nowhere. 400 where the
+  draft is not this account's.
