@@ -28,7 +28,8 @@ docs: |-
   date and today). A past entry shows paidByThen or furnishedOn. Under the old regime a DEDUCTION_PAID_BY entry on the
   year's last day gives Schedule XV's room (amountToPay), what counted (paidByThen) and the tax filling it saves
   (costOfMissing — tax, not interest; W-114a), and one per party for health cover — the assessee's, and the parents'
-  where the family lists one — naming the s.126 row it reaches (W-114c). A REGIME_ELECTION entry on the due date names the regime opting out
+  where the family lists one — naming the s.126 row it reaches (W-114c), and own NPS's s.124(3) room, claimed before
+  s.123 (W-114d). A REGIME_ELECTION entry on the due date names the regime opting out
   reaches (and its form, where made in one) and the tax staying in the default costs (W-114b). Entries overlap; their
   costs do not add up. Stored
   nowhere. 400 where the draft is not this account's or states no due date.
