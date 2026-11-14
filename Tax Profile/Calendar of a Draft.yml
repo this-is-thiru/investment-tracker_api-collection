@@ -1,0 +1,29 @@
+info:
+  name: Calendar of a Draft
+  type: http
+  seq: 12
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/calendar"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  The year's dated actions (F30, W-114): each advance-tax instalment, the s.425(4) / s.234C relief day where a gain or
+  dated dividend arose after an instalment date, and the return's due date. Each entry carries costOfMissing: the
+  interest and fees taking the action would save, the draft computed twice as of measuredAsOf (the later of the due
+  date and today). A past entry shows paidByThen or furnishedOn. Entries overlap; their costs do not add up. Stored
+  nowhere. 400 where the draft is not this account's or states no due date.
