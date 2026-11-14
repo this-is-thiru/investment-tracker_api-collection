@@ -1,0 +1,28 @@
+info:
+  name: Forecast a Draft
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/forecast"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Refund after filing, or payable now and by when (F29, W-113). Three figures: liability (the bill with interest and
+  fees), byEmployer (the draft's /filing/ofWhichByEmployer, the employer's part of tax at source, null where not
+  stated) and otherCredits; liability − byEmployer − otherCredits + rounding = net. Computed under the draft's elected
+  regime, or the year's default; stored nowhere. 400 where the draft is not this account's or states no due date.
