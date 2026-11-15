@@ -1,0 +1,33 @@
+info:
+  name: Claim Integrity of a Draft
+  type: http
+  seq: 15
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/claim-integrity"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  For each claim in the draft that its evidence bears on (F23, W-119c): allowed, what the law allows on the facts as
+  entered; evidenced, what the documents held support today (the draft's /evidence: receipted months per tenancy,
+  expenditure per journey, amount per Schedule XV code); gap, the difference; limitedBy, what bound the evidenced figure;
+  and says, in plain words, "Fully evidenced." or what is not yet evidenced and what would evidence it, with whether the
+  draft's landlords have name, address and PAN on file on a rent row. Each figure is the engine's: the draft is computed
+  as it stands, with every evidenced figure cut to what is held, and with each kind of evidence held to nothing — a rule
+  whose exemption or deduction moves with a kind is a claim that kind bears on. Rent is taken as equal each month. A gap
+  below nil means another claim takes over where evidence is missing. Nothing is stored and no figure of the draft moves.
+  400 where the draft is not this account's or states no due date.
