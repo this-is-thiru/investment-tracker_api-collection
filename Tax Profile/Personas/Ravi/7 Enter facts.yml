@@ -94,6 +94,15 @@ http:
           "op": "replace",
           "path": "/filing/dueDate",
           "value": "2027-07-31"
+        },
+        {
+          "op": "add",
+          "path": "/evidence",
+          "value": {
+            "receiptedMonths": [
+              12
+            ]
+          }
         }
       ]
   auth: inherit
@@ -105,4 +114,4 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Send once: a second send adds the lists again. If-Match is the new draft's revision, rev-0. The due date is an input the computation asks for, not a statement of the law.
+  Send once: a second send adds the lists again. If-Match is the new draft's revision, rev-0. The due date is an input the computation asks for, not a statement of the law. The evidence records a rent receipt held for each of the tenancy's twelve months (W-119b): what Ravi can show, which changes no figure; it is matched to the tenancies by position.
