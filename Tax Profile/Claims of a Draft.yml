@@ -1,0 +1,33 @@
+info:
+  name: Claims of a Draft
+  type: http
+  seq: 14
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/claims"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Every claim of the draft's year, as the claim catalogue states how it is made (F40, W-118): its plain name and
+  summary, how it reaches the tax, what its absence from Form 16 means, both Acts' provisions, and the steps, whom to
+  ask, evidence and common mistakes, every figure the year's in rupees. claimed holds the claims the draft's
+  computation allows, each with allowed (what it takes off total income) and worth (what it takes off the bill), both
+  measured by computing the draft again with the claim's rules withheld; the claims overlap, so worths need not add up.
+  notClaimed holds the year's others, without a measure. stepDates gives the day each step due by the tax year's end
+  or the return's due date falls on; a step by the employer's cut-off has none. No Form 16 is compared yet, and a
+  reported donation is listed unmeasured until its entry names the rules that deduct it (W-117e); notIncluded says
+  so. Stored nowhere. 400 where the draft is not this account's or states no due date.
