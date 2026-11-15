@@ -1,0 +1,33 @@
+info:
+  name: Onboarding Steps of a Draft
+  type: http
+  seq: 16
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/onboarding"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  The draft's five onboarding steps in the order they are asked (F34, W-122a): PAY, PAY_STRUCTURE_AND_RENT,
+  EMPLOYER_FUNDS, INVESTMENTS_AND_INSURANCE, OTHER_INCOME_AND_PROPERTY. Each says whether the person has marked it
+  answered — "nothing to enter" included — and, while open, the completeness items it covers with each one's own worth,
+  never added since they overlap: the rent item under step 2, the Chapter VIII rooms under step 4. Steps 1, 3 and 5
+  have no measured worth yet and notMeasured says so. next is the first open step; empty once all are answered.
+  Mark a step answered with the draft's PATCH and its If-Match, e.g.
+  [{"op": "add", "path": "/onboarding/answered/-", "value": "INVESTMENTS_AND_INSURANCE"}], and open it again by
+  removing it; any step, in any order. An unknown step is 400. Answered steps are never handed to the engine, so marking
+  one moves no figure. Stored nowhere. 400 where the draft is not this account's.
