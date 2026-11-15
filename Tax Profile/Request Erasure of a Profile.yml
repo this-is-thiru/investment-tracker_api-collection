@@ -22,5 +22,6 @@ settings:
   maxRedirects: 5
 
 docs: |
-  Take your copy first: once asked, the profile cannot be read. Read its drafts, revisions and computations; the PDF
-  report replaces them as the copy when W-123 is built (W-247 C2a, D-477).
+  Take your copy first: once asked, the profile cannot be read. List its computations
+  (`GET /tax/user/{email}/profiles/{profileId}/computations`) and take each one's PDF report by its receipt
+  (`GET /tax/user/{email}/computations/{receipt}/report`); read its drafts and revisions too (W-247 C2a, D-477, W-123b).
