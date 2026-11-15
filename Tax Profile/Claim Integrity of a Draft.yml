@@ -24,7 +24,9 @@ settings:
 docs: |-
   For each claim in the draft that its evidence bears on (F23, W-119c): allowed, what the law allows on the facts as
   entered; evidenced, what the documents held support today (the draft's /evidence: receipted months per tenancy,
-  expenditure per journey, amount per Schedule XV code); gap, the difference; limitedBy, what bound the evidenced figure;
+  expenditure per journey, amount per Schedule XV code, and under /evidence/chapterViii the amount held for each health
+  payment, donation, education loan, house or vehicle loan, dependant with disability and specified-disease treatment,
+  matched to the entries by position, and the Agniveer fund's own subscription — W-119b1); gap, the difference; limitedBy, what bound the evidenced figure;
   and says, in plain words, "Fully evidenced." or what is not yet evidenced and what would evidence it, with whether the
   draft's landlords have name, address and PAN on file on a rent row. Each figure is the engine's: the draft is computed
   as it stands, with every evidenced figure cut to what is held, and with each kind of evidence held to nothing — a rule
