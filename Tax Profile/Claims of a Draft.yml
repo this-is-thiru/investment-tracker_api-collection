@@ -24,13 +24,14 @@ settings:
 docs: |-
   Every claim of the draft's year, as the claim catalogue states how it is made (F40, W-118): its plain name and
   summary, how it reaches the tax, what its absence from Form 16 means, both Acts' provisions, and the steps, whom to
-  ask, evidence and common mistakes, every figure the year's in rupees. claimed holds the claims the draft's
+  ask, evidence (each with from, who provides it, and recordedAs, what WealthLens keeps that answers it — W-120)
+  and common mistakes, every figure the year's in rupees. claimed holds the claims the draft's
   computation allows, each with allowed (what it takes off total income) and worth (what it takes off the bill), both
   measured by computing the draft again with the claim's rules withheld; the claims overlap, so worths need not add up.
   Each claimed entry's finalAmount gives the amount finally payable (bill less credits, with interest and fees,
   rounded) withClaim and withoutClaim, and changes; where the rounding takes up the claim's worth, changes is false and
   says carries the year's sentence. Every claim made is listed whatever finalAmount says (F40.5, W-121).
   notClaimed holds the year's others, without a measure. stepDates gives the day each step due by the tax year's end
-  or the return's due date falls on; a step by the employer's cut-off has none. No Form 16 is compared yet, and a
-  reported donation is listed unmeasured until its entry names the rules that deduct it (W-117e); notIncluded says
-  so. Stored nowhere. 400 where the draft is not this account's or states no due date.
+  or the return's due date falls on; a step by the employer's cut-off has none. No Form 16 is compared yet; a donation
+  is priced with the donations entry, and the reported-donation entry is listed as not claimed, without a worth
+  (W-117e, D-716); notIncluded says so. Stored nowhere. 400 where the draft is not this account's or states no due date.

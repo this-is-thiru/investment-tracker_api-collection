@@ -1,0 +1,34 @@
+info:
+  name: Document Checklist of a Draft
+  type: http
+  seq: 19
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/document-checklist"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  For each claim the draft's computation makes (F25, W-120), every document the claim catalogue says it rests on: its
+  name and closedBy (what makes it complete), from (who provides it — YOU, EMPLOYER, INSTITUTION, LENDER or LANDLORD)
+  and askFor (what to ask them for), and state: HELD; NOT_HELD, with outstanding (months of rent, or rupees) where the
+  draft measures it; NOT_ASKED, the landlord's particulars where rent is not above r.205(2)'s figure; or NOT_RECORDED,
+  where WealthLens keeps no record and the person checks it. says gives the state in the year's words. What answers a
+  document comes from the draft's /evidence (receipted months, journey expenditure, payment amounts, Chapter VIII
+  amounts), the profile's landlords and lenders the draft links (name, address and PAN on file), and the home loan's
+  lenderCertificateHeld. Conditions that are not documents, such as how a payment was made, are applied in the
+  computation itself. Nothing is stored and no figure of the draft moves. 400 where the draft is not this account's or
+  states no due date.
