@@ -28,7 +28,11 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Computes the draft under the regime given and stores the computation. Each line of tax.trace carries in and out (the
+  Computes the draft under the regime given and stores the computation. coarse says whether any onboarding step is
+  still unanswered (F34.3, W-122b); while it is, band gives upper (the bill as the draft stands) and lower (the bill with
+  every room of the open steps filled at once — rent with pay structure and rent, Chapter VIII with investments and
+  insurance) and says, in the year's words; income not yet entered is outside the band. A computation stored before
+  W-122b reads with coarse and band null: neither coarse nor final is stated. Each line of tax.trace carries in and out (the
   line's figures, where they are money) and explanation (F37, W-116): the line in plain language — what the figure is,
   which limit set it and that raising the other limits alone would not change it — from the pack's content layer
   (content/explanations.json). A rule with no sentence yet shows its rule id; W-325 writes the rest.
