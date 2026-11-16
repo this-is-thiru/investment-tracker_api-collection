@@ -1,0 +1,29 @@
+info:
+  name: Compare Regimes of a Draft
+  type: http
+  seq: 21
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/compare-regimes"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Every regime the year's election compares, priced on the draft: chosen (the regime the election resolves to), mode
+  (how it was chosen) and priced (each regime with its bill). coarse says whether any onboarding step is still
+  unanswered (F34.3, W-122b1); while it is, says carries the year's sentence. No band per regime — compute a regime for
+  its band. The draft is unchanged and nothing is stored. 400 where the draft is not this account's or states no due
+  date.

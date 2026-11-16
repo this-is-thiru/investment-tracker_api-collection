@@ -28,5 +28,6 @@ docs: |-
   and figure, and one disclaimer naming the year's Act, Finance Act and Rules. A line whose rule is not verified
   against a primary source says "Not verified", but only where the rule's text is still the one the computation read;
   where it has changed, or was not recorded, the line says so and states no status. If the rule data has been updated
-  since, the first page says so, naming the versions then and now. 400 where the account holds no such receipt, or the
+  since, the first page says so, naming the versions then and now. Where the computation was coarse when stored, the
+  first page says so with its band (W-122b1); one stored before W-122b says neither. 400 where the account holds no such receipt, or the
   profile is held for erasure; the read is recorded in the access log.
