@@ -1,0 +1,44 @@
+info:
+  name: First Figure of a Year
+  type: http
+  seq: 20
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/workspaces/:taxYear/first-figure"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: profileId
+      value: ""
+      type: path
+    - name: taxYear
+      value: "2026"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "label": "First figure",
+        "grossPay": {
+          "amountInRupees": 1200000
+        },
+        "dueDate": "2027-07-31"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  A first figure from onboarding step 1 alone (F34.1, W-122c): creates a draft under the profile's year workspace, enters
+  grossPay as one SPECIAL_ALLOWANCE (taxable as salary, in no salary base, so nothing about its split is assumed), sets
+  dueDate — the day the return is due, as you state it; no rule holds it, since it is often extended — and marks step
+  PAY answered, all as revision 1. It then computes and stores the draft under each regime the year compares, the
+  default first: each figure is an ordinary computation with its receipt, coarse true and its band (W-122b). label,
+  grossPay above nil and dueDate are required: 400 naming the field, and no draft is created. 400 where the profile is
+  not this account's. Each call creates a new draft.
