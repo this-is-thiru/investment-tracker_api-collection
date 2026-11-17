@@ -1,0 +1,37 @@
+info:
+  name: Confirm a Document
+  type: http
+  seq: 24
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/documents/:documentId/confirm"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: documentId
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "attemptId": "",
+        "accepted": ["partA.employee.pan", "partC.annexureI.row12"],
+        "corrected": {"partC.annexureI.row17": "105000"},
+        "rejected": []
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Confirms the latest reading of a certificate (W-131d1): rows taken as read (accepted), rows written anew as text
+  (corrected: rupees, yes/no, yyyy-MM-dd/yyyy-MM-dd, or words), rows left out (rejected). Refused (400) for an older or
+  failed reading, one already confirmed, a row the reading cannot take, a correction that does not read, or an
+  employee PAN (Part A item 11) missing or not the profile's. 503 while switched off.

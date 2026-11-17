@@ -1,0 +1,28 @@
+info:
+  name: Parse of a Document
+  type: http
+  seq: 23
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/documents/:documentId/parse"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: documentId
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  What was read from an uploaded certificate (W-131d1): WAITING until the first reading, then the latest reading's
+  outcome, rows (path, text read, value as text, confidence, page), unread text and notes; employeePan MATCHES,
+  DIFFERS or NOT_READ against the profile's PAN, which is never printed; and whether the reading is confirmed. Each
+  call is recorded as a read of the document. 400 where the document is not this account's; 503 while switched off.

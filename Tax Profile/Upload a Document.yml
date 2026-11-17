@@ -1,0 +1,41 @@
+info:
+  name: Upload a Document
+  type: http
+  seq: 22
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/documents"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - ""
+      - name: profileId
+        type: text
+        value: ""
+      - name: taxYear
+        type: text
+        value: "2026"
+      - name: documentType
+        type: text
+        value: FORM_130
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Uploads a salary certificate (W-131d1): a PDF of at most 20 MB and 50 pages, without a password, for one of the
+  account's profiles. Accepted for a form some parser reads (FORM_130) and a tax year whose pack has its layout (2026 on);
+  otherwise 400 naming why. The same bytes again under the profile return the stored document with newlyStored false.
+  Read in the background within a minute. 503 while app.tax.documents.enabled is false, as every profile yaml ships it.
