@@ -24,7 +24,9 @@ settings:
 docs: |-
   The draft's confirmed Form No. 130s against a computation of the draft (M4.2, W-131d2). assembly: how the year's
   certificates carry Part C and what to act on (W-129); report: each printed figure the computation also produces, its
-  difference and reasons, and a verdict MATCHED / MINOR_DIFFERENCE / MATERIAL_DIFFERENCE / CANNOT_COMPARE (W-130);
+  difference and reasons, a verdict MATCHED / MINOR_DIFFERENCE / MATERIAL_DIFFERENCE / CANNOT_COMPARE (W-130), and
+  explanations: each reason in words, e.g. "more tax will be payable at filing" or "a refund is due at filing", or why a
+  year cannot be compared (W-132);
   unconfirmedDocumentIds: the year's certificates left out because no reading of them is confirmed. Each certificate
   is taken by its latest confirmed reading. Computed under the draft's elected regime, or the year's default; stored
   nowhere. 503 while app.tax.documents.enabled is off; 400 where the draft is not this account's or no certificate
