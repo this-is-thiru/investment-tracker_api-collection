@@ -1,0 +1,36 @@
+info:
+  name: Preview a Salary Workbook
+  type: http
+  seq: 26
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/salary-import"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  A CTC workbook (.xlsx) previewed against the draft (F28, W-133a); nothing is stored. The first sheet's header row names
+  "Component" and "Annual Amount" and/or "Monthly Amount" (any case, any order); at most 200 rows, 1 MiB. matched: each row
+  whose label is a pay-line component's code or name exactly, with its annual amount (monthly × 12 where only that is given,
+  fromMonthly true); returned: each other row with its amount and why, never guessed and never dropped; components: what a
+  returned row can be mapped to. 400 for another account's draft, an unreadable workbook, or a row whose amount is no rupee
+  figure (named by row). Applying the preview to the draft is W-133b.
