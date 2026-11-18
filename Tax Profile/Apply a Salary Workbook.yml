@@ -1,0 +1,48 @@
+info:
+  name: Apply a Salary Workbook
+  type: http
+  seq: 27
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/drafts/:draftId/salary-import/apply"
+  params:
+    - name: email
+      value: "{{EMAIL}}"
+      type: path
+    - name: draftId
+      value: ""
+      type: path
+  headers:
+    - name: If-Match
+      value: "\"rev-0\""
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value: ""
+      - name: decisions
+        type: text
+        contentType: application/json
+        value: |-
+          {"mappings": [{"row": 3, "code": "CONVEYANCE_ALLOWANCE"}], "leftOut": [4],
+           "employment": {"termsIncludeDearnessAllowance": false, "employerKind": "OTHER",
+                          "dearnessAllowanceCountsForRetirement": false, "companyEmployer": null}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  The previewed workbook applied as one employment on the draft (F28, W-133b). Send the same file again with the decisions:
+  the server reads it again and matches it again, so what is written is its own reading. Every row the preview returned needs a
+  decision by row number: mapped to a code of the year's pay-line components, or in leftOut. employment is the employment's own
+  facts, as a manual entry sends them, without components (its pay lines are the workbook's); nothing is defaulted. If-Match
+  holds the draft's revision ("rev-N"), as for any save; a stale one is a 409. The revision records the import (importedFrom:
+  workbookSha256, rowsApplied, rowsMapped, rowsLeftOut), shown in GET .../revisions. 400 for an undecided, unknown or doubly
+  decided row, a code not in the year, two rows for one component, nothing left to import, or a workbook already imported into
+  the draft (naming the revision).
