@@ -33,6 +33,12 @@ http:
               "amount": {
                 "amountInRupees": 0
               }
+            },
+            "NET_AGRICULTURAL_INCOME": {
+              "@type": "Amount",
+              "amount": {
+                "amountInRupees": 0
+              }
             }
           }
         }
@@ -46,4 +52,4 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Answers some of the year's questions in a draft (W-090a2). Codes come from "List the Declarations"; a yes-or-no question takes {"@type": "YesNo", "yes": …}, an amount question {"@type": "Amount", "amount": {"amountInRupees": …}}. A question left out is unanswered, never a no. A code the draft's year does not ask, or an answer of the wrong kind, is refused with 400 naming the question. If-Match is the draft's current revision. Nothing here changes a figure yet: which ITR form each answer bars is W-090c.
+  Answers some of the year's questions in a draft (W-090a2). Codes come from "List the Declarations"; a yes-or-no question takes {"@type": "YesNo", "yes": …}, an amount question {"@type": "Amount", "amount": {"amountInRupees": …}}. A question left out is unanswered, never a no. A code the draft's year does not ask, or an answer of the wrong kind, is refused with 400 naming the question. If-Match is the draft's current revision. Most answers change no figure; they decide which ITR form each answer bars (W-090c). NET_AGRICULTURAL_INCOME does: net agricultural income above the Finance Act's limit is brought into the rates (W-258), and while it is unanswered the computation says so in a notice.
