@@ -1,0 +1,6 @@
+info:
+  name: Tax Admin
+  type: folder
+
+request:
+  auth: inherit

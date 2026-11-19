@@ -1,0 +1,32 @@
+info:
+  name: Run a tax job
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax-planning/admin/jobs/log-retention/run"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  **Purpose:**
+  Runs one tax job now (W-336). While the app runs only on the owner's machine every shipped profile has
+  `app.tax.jobs.enabled` false, so nothing is scheduled: the owner runs each job on the deploy runbook's §5.2 cadence.
+
+  **Endpoint:**
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/tax-planning/admin/jobs/{name}/run`
+
+  **Names:** `account-erasure`, `auto-archive`, `gazette-watch` (only once its own switch is on), `log-retention`,
+  `parse-documents`, `retention-purge`, `staleness-sweep`.
+
+  **Answers:** `{"job": "<name>", "ran": true}`; `"ran": false` when another run holds the job's lease (run again
+  later). A name no job has is 400, naming the jobs; the Gazette watch while it is off is 400. Safe to repeat: every job
+  is idempotent.
+
+  **Authorisation:** `SUPER_USER`.
