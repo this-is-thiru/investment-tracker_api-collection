@@ -1,0 +1,32 @@
+info:
+  name: Refresh Token
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/auth/token/refresh"
+  body:
+    type: json
+    data: |-
+      {
+        "refresh_token": "{{REFRESH_TOKEN}}"
+      }
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        let status = res.getStatus();
+
+        let body = status!=200? null: res.getBody();
+        bru.setEnvVar('JWT_TOKEN', body?.access_token);
+        bru.setEnvVar('REFRESH_TOKEN', body?.refresh_token);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Renews the access token without the password (W-358b). Send the refresh token from Login, kept in {{REFRESH_TOKEN}}; the response holds a new `access_token` (15 minutes), `expires_in` and a new `refresh_token`, which replaces the one sent — that one is spent, and sending it again ends the whole sign-in. 401 once the 14 days from the sign-in have passed, after Logout or a password change, or for a held account: sign in again. Public: no Authorization header is needed or read.

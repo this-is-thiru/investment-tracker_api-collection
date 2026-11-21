@@ -1,0 +1,22 @@
+info:
+  name: Logout
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/auth/logout"
+  body:
+    type: json
+    data: |-
+      {
+        "refresh_token": "{{REFRESH_TOKEN}}"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Ends the sign-in the refresh token belongs to (W-358b); every refresh token rotated from it stops working. 204, the same for a token already ended or unknown. An access token already issued lasts out its 15 minutes.

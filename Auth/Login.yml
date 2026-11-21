@@ -23,6 +23,7 @@ runtime:
         let body = status!=200? null: res.getBody();
         let token = body?.access_token;
         bru.setEnvVar('JWT_TOKEN', token);
+        bru.setEnvVar('REFRESH_TOKEN', body?.refresh_token);
 
 settings:
   encodeUrl: true
@@ -30,4 +31,4 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: This endpoint is used to authenticate a user. Provide the user's email and password in the request body using the variables {{EMAIL}} and {{PASSWORD}}. Upon successful authentication, a JWT token is returned in the response. Use this token for subsequent authenticated requests. The response also carries `privacy_notice` (the page, `/privacy`) and `privacy_notice_version`; an account registered before W-250 is recorded as given the notice at its first sign-in (DPDP Act s.5(2)).
+docs: This endpoint is used to authenticate a user. Provide the user's email and password in the request body using the variables {{EMAIL}} and {{PASSWORD}}. Upon successful authentication, a JWT token is returned in the response. Use this token for subsequent authenticated requests; it lasts 15 minutes (`expires_in`: 900). The `refresh_token`, kept in {{REFRESH_TOKEN}}, renews it (Refresh Token) for 14 days from this sign-in (W-358b). The response also carries `privacy_notice` (the page, `/privacy`) and `privacy_notice_version`; an account registered before W-250 is recorded as given the notice at its first sign-in (DPDP Act s.5(2)).
