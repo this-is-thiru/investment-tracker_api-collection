@@ -4,23 +4,17 @@ info:
   seq: 8
 
 http:
-  method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/corporate-actions/update/priority/:id/:priority"
+  method: PATCH
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/corporate-actions/:id"
   params:
     - name: id
       value: 6885ce86a14230c33e85bc82
-      type: path
-    - name: priority
-      value: "1"
       type: path
   body:
     type: json
     data: |-
       {
-          "action": "STOCK_SPLIT",
-          "stockCode": "RELIANCE",
-          "splitRatio": "2:1",
-          "recordDate": "2024-10-28"
+        "priority": 1
       }
   auth: inherit
 

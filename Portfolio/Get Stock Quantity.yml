@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/stock/:stockCode/all"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/stocks/:stockCode"
   params:
     - name: stockCode
       value: ITBEES

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/upload-transactions?quarter=Q1"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transactions/uploads?quarter=Q1"
   params:
     - name: quarter
       value: Q1

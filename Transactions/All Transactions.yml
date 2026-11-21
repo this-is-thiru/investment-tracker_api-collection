@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/all/transactions"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transactions"
   body:
     type: json
     data: "{\r

@@ -4,8 +4,8 @@ info:
   seq: 12
 
 http:
-  method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/clear/all"
+  method: DELETE
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio"
   body:
     type: json
     data: ""
