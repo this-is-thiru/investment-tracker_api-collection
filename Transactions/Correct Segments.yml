@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/transactions/segment/correct?dryRun=true"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/transactions/segment/correct?dryRun=true"
   params:
     - name: dryRun
       value: "true"
@@ -27,7 +27,7 @@ docs: |-
   use (W-299, WL-46).
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/transactions/segment/correct?dryRun=true`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/transactions/segment/correct?dryRun=true`
 
   **Authorisation:** `SUPER_USER`; anyone else gets 403.
 

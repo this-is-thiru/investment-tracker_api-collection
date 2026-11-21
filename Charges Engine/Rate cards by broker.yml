@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules?broker=ZERODHA"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-schedules?broker=ZERODHA"
   params:
     - name: broker
       value: "ZERODHA"
@@ -23,7 +23,7 @@ docs: |-
   Every rate card on file for a broker, newest window first.
 
   **Endpoint:**
-  `GET {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules?broker=ZERODHA`
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-schedules?broker=ZERODHA`
 
-  A single card is fetched by its code at `/charge-schedules/{scheduleCode}` — the code, not a Mongo
+  A single card is fetched by its code at `/api/v1/me/charges/charge-schedules/{scheduleCode}` — the code, not a Mongo
   id, because it is what the seed files, the validator and every stored charge row already carry.

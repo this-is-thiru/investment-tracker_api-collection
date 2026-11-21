@@ -5,11 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/search"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/assets/search"
   body:
     type: json
     data: "{\r
@@ -52,7 +48,7 @@ docs: |-
   This request retrieves user portfolio transactions where the 'transaction_date' is less than or equal to a specified date. It is used to filter assets that have been held for more than one year, or up to a given date, based on the provided filter criteria.
 
   **Endpoint:**  
-  POST `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/search`
+  POST `{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/assets/search`
 
   **Required Variables:**
 

@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/transaction/:transactionId"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges/transaction/:transactionId"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: transactionId
       value: ""
       type: path
@@ -30,6 +27,6 @@ docs: |-
   charge can be re-derived and audited rather than taken on trust.
 
   **Endpoint:**
-  `GET {{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/transaction/:transactionId`
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges/transaction/:transactionId`
 
   Answers 400 with a readable message when no charge was recorded for that transaction.

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/profit-and-loss/rebuild?dryRun=true"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/users/:email/profit-and-loss/rebuild?dryRun=true"
   params:
     - name: email
       value: "{{EMAIL}}"
@@ -28,7 +28,7 @@ docs: |-
   sales, as recorded; nothing is priced again. Only `profit_and_loss` is rebuilt, not `assets` (W-283a).
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/profit-and-loss/rebuild?dryRun=true`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/users/:email/profit-and-loss/rebuild?dryRun=true`
 
   **Authorisation:** `SUPER_USER`; a user asking for their own gets 403.
 

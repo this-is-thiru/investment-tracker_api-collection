@@ -5,11 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/gaps"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges/gaps"
   auth: inherit
 
 settings:
@@ -29,4 +25,4 @@ docs: |-
   notices the portfolio is quietly under-costed. This endpoint is that gap made visible.
 
   **Endpoint:**
-  `GET {{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email/gaps`
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges/gaps`

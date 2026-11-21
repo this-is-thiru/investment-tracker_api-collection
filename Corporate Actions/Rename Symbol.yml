@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/perform"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/corporate-actions/perform"
   body:
     type: json
     data: |-

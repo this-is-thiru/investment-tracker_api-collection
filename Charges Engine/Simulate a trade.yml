@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charges/simulate"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/simulate"
   body:
     type: json
     data: |-
@@ -68,7 +68,7 @@ docs: |-
   mutate.
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/charges/simulate`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/simulate`
 
   **Required fields:**
   - `brokerName`, `assetType` — pick the rate card

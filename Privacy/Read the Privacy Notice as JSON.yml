@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/privacy/rights"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/privacy/rights"
 
 runtime:
   scripts:

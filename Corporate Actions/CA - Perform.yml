@@ -5,11 +5,7 @@ info:
 
 http:
   method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/user/:email/perform"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/corporate-actions/perform"
   body:
     type: json
     data: |-

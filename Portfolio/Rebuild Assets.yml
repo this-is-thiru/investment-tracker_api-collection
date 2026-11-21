@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild?dryRun=true"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/users/:email/assets/rebuild?dryRun=true"
   params:
     - name: email
       value: "{{EMAIL}}"
@@ -29,7 +29,7 @@ docs: |-
   Run the dry run first and read it (runbook §2.12).
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/assets/rebuild?dryRun=true`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/portfolio/users/:email/assets/rebuild?dryRun=true`
 
   **Authorisation:** `SUPER_USER`; a user asking for their own gets 403.
 

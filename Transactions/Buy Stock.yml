@@ -5,11 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transaction"
   body:
     type: json
     data: |-
@@ -52,7 +48,7 @@ docs: |-
 
   **HTTP Method:** POST
 
-  **Endpoint:** `{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/transaction`
+  **Endpoint:** `{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transaction`
 
   ---
 
@@ -78,7 +74,7 @@ docs: |-
 
   **Example Request:**
   ```
-  POST {{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/{{EMAIL}}/transaction
+  POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transaction
   Authorization: Bearer {{JWT_TOKEN}}
   Content-Type: application/json
 

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/auth/logout"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/auth/logout"
   body:
     type: json
     data: |-

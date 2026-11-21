@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/delete/:id"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/corporate-actions/delete/:id"
   params:
     - name: id
       value: 69e63956d319642fc261966d

@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/helper/template/fields"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/templates/fields"
   body:
     type: json
     data: ""

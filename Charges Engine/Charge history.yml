@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email?from=2025-04-01&to=2025-06-30&assetType=EQUITY"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges?from=2025-04-01&to=2025-06-30&assetType=EQUITY"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: from
       value: "2025-04-01"
       type: query
@@ -33,7 +30,7 @@ docs: |-
   the superseded implementation's documents — both are live until the Phase C cutover.
 
   **Endpoint:**
-  `GET {{INVESTMENT_TRACKER_SERVICE}}/user-charges/user/:email`
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/user-charges`
 
   **Query parameters (all optional):**
   - `from` and `to` — inclusive, `yyyy-MM-dd`. **Both or neither**: a half-open range is rejected with

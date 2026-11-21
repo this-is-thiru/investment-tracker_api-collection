@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/auth/register"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/auth/register"
   body:
     type: json
     data: "{\r
@@ -28,7 +28,7 @@ settings:
 docs: |-
   Registers a new user in the system.
 
-  **Endpoint:** `POST {{INVESTMENT_TRACKER_SERVICE}}/auth/register`
+  **Endpoint:** `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/auth/register`
 
   **Purpose:**
   This endpoint creates a new user account by accepting user details in the request body. It is used during user onboarding to register a user with the specified credentials. Every account registered is a `USER`; a role above it is granted only by the owner (W-255).

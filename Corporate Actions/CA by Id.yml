@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/:id"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/corporate-actions/:id"
   params:
     - name: id
       value: ""

@@ -5,14 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/portfolio/user/:email/profit-and-loss?financialYear=2025-2026"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/profit-and-loss?financialYear=2025-2026"
   params:
     - name: financialYear
       value: 2025-2026
       type: query
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
   auth: inherit
 
 settings:

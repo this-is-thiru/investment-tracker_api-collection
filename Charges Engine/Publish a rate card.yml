@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/charge-schedules"
   body:
     type: json
     data: |-
@@ -57,7 +57,7 @@ docs: |-
   incumbent by hand first is neither necessary nor correct.
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/charge-schedules`
 
   **Authorisation:** `SUPER_USER`. A rate card decides what every user of the application is
   charged, so being authenticated is not the same as being entitled to reprice other people's trades.

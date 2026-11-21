@@ -15,4 +15,4 @@ settings:
 
 docs: |
   The privacy notice as a page, public: open it in a browser before signing in (W-247; DPDP Rules r.14(1), r.9).
-  The same notice as JSON is `GET /privacy/rights`.
+  The same notice as JSON is `GET /api/v1/public/privacy/rights`.

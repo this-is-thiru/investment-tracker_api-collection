@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/capital-gains/:taxYear"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/tax/profiles/:profileId/capital-gains/:taxYear"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: profileId
       value: "<profile id from Create a Profile>"
       type: path

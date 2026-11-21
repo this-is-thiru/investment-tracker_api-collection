@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/declarations/:taxYear"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/tax/declarations/:taxYear"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: taxYear
       value: "2026"
       type: path

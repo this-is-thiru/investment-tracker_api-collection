@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/unverified"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-schedules/unverified"
   auth: inherit
 
 settings:
@@ -24,4 +24,4 @@ docs: |-
   worklist for making them real.
 
   **Endpoint:**
-  `GET {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/unverified`
+  `GET {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-schedules/unverified`

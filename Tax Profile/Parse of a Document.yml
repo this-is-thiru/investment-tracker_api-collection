@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/documents/:documentId/parse"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/tax/documents/:documentId/parse"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: documentId
       value: ""
       type: path

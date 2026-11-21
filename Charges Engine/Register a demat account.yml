@@ -5,11 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-accounts/user/:email"
-  params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-accounts"
   body:
     type: json
     data: |-
@@ -39,7 +35,7 @@ docs: |-
   two holders selling the same scrip on the same day incur two separate debits.
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/charge-accounts/user/:email`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-accounts`
 
   The path owns the email; an `email` in the body is overwritten by it. `GET` on the same path lists
   the accounts registered for a user.

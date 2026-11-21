@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/corporate-action/update/priority/:id/:priority"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/corporate-actions/update/priority/:id/:priority"
   params:
     - name: id
       value: 6885ce86a14230c33e85bc82

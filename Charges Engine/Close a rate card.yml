@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/:scheduleCode/close?endDate=2026-03-31"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/charge-schedules/:scheduleCode/close?endDate=2026-03-31"
   params:
     - name: scheduleCode
       value: "ZERODHA_EQ_DELIVERY_2025_04"
@@ -30,7 +30,7 @@ docs: |-
   The record stays usable: trades dated inside the closed window still resolve against it.
 
   **Endpoint:**
-  `PATCH {{INVESTMENT_TRACKER_SERVICE}}/charge-schedules/:scheduleCode/close?endDate=yyyy-MM-dd`
+  `PATCH {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/charge-schedules/:scheduleCode/close?endDate=yyyy-MM-dd`
 
   **Authorisation:** `SUPER_USER`.
 

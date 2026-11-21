@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8080/analytics/user/{{EMAIL}}/xirr
+  url: http://localhost:8080/api/v1/me/portfolio/analytics/xirr
   body:
     type: json
     data: "{}"

@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/charges/amc/impose?frequency=ANNUALLY&billedThrough=2025-12-31"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/amc/impose?frequency=ANNUALLY&billedThrough=2025-12-31"
   params:
     - name: frequency
       value: "ANNUALLY"
@@ -32,7 +32,7 @@ docs: |-
   twice — in the query and again per account.
 
   **Endpoint:**
-  `POST {{INVESTMENT_TRACKER_SERVICE}}/charges/amc/impose?frequency=ANNUALLY&billedThrough=yyyy-MM-dd`
+  `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/charges/amc/impose?frequency=ANNUALLY&billedThrough=yyyy-MM-dd`
 
   **Authorisation:** `SUPER_USER`. One call bills every account of a frequency across every user.
 

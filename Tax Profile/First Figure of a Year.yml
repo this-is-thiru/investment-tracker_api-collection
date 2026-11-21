@@ -5,11 +5,8 @@ info:
 
 http:
   method: POST
-  url: "{{INVESTMENT_TRACKER_SERVICE}}/tax/user/:email/profiles/:profileId/workspaces/:taxYear/first-figure"
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/tax/profiles/:profileId/workspaces/:taxYear/first-figure"
   params:
-    - name: email
-      value: "{{EMAIL}}"
-      type: path
     - name: profileId
       value: ""
       type: path
