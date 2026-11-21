@@ -29,4 +29,5 @@ settings:
   followRedirects: true
   maxRedirects: 5
 
-docs: Renews the access token without the password (W-358b). Send the refresh token from Login, kept in {{REFRESH_TOKEN}}; the response holds a new `access_token` (15 minutes), `expires_in` and a new `refresh_token`, which replaces the one sent — that one is spent, and sending it again ends the whole sign-in. 401 once the 14 days from the sign-in have passed, after Logout or a password change, or for a held account: sign in again. Public: no Authorization header is needed or read.
+docs: |-
+  Renews the access token without the password (W-358b). Send the refresh token from Login, kept in {{REFRESH_TOKEN}}; the response holds a new `access_token` (15 minutes), `expires_in` and a new `refresh_token`, which replaces the one sent — that one is spent, and sending it again ends the whole sign-in. 401 once the 14 days from the sign-in have passed, after Logout or a password change, or for a held account: sign in again. Public: no Authorization header is needed or read.

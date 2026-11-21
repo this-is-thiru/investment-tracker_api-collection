@@ -37,3 +37,5 @@ docs: |-
     400 rather than interpreted, because guessing which end was meant returns a short list that looks
     like missing charges
   - `assetType` — `EQUITY`, `MUTUAL_FUND`, and so on
+
+  Answers a page (W-358c3b): `content` holds the rows and `page` the size, number and totals; ask for the next with `?page=1` (and `&size=`, 50 by default, at most 200).

@@ -104,3 +104,5 @@ docs: |
   **Related Requests:**
   - [Transactions](request/27168215-17f65827-a2cc-440c-8ebf-2f39c51286d1) (this request)
   - [Transations | Filter](request/27168215-1b18427f-7d26-492b-8664-4fe1a937c296)
+
+  Answers a page (W-358c3b): `content` holds the rows and `page` the size, number and totals; ask for the next with `?page=1` (and `&size=`, 50 by default, at most 200).

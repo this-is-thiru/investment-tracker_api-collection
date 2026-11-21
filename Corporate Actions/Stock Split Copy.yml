@@ -26,3 +26,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Answers a page (W-358c3b): `content` holds the rows and `page` the size, number and totals; ask for the next with `?page=1` (and `&size=`, 50 by default, at most 200).

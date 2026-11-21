@@ -23,3 +23,5 @@ docs: |-
   draftLabel, revision, regime and computedAt (UTC; absent for one stored before W-123b, listed last). Take each one's
   PDF report by its receipt — the copy to keep before asking for the profile to be erased. Each row's read is recorded
   in the access log. 400 where the profile is not this account's or is held for erasure.
+
+  Answers a page (W-358c3b): `content` holds the rows and `page` the size, number and totals; ask for the next with `?page=1` (and `&size=`, 50 by default, at most 200).
