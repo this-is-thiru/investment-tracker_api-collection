@@ -12,7 +12,7 @@ runtime:
     - type: after-response
       code: |-
         let body = res.getStatus() != 200 ? null : res.getBody();
-        bru.setEnvVar('PRIVACY_NOTICE_VERSION', body?.data?.version);
+        bru.setEnvVar('PRIVACY_NOTICE_VERSION', body?.version);
 
 settings:
   encodeUrl: true
