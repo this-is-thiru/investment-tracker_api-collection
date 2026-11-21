@@ -5,7 +5,7 @@ info:
 
 http:
   method: get
-  url: http://localhost:8080/api/v1/me/portfolio/analytics/portfolio-summary
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/analytics/portfolio-summary"
   auth: inherit
 
 settings:

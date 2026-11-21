@@ -8,31 +8,19 @@ http:
   url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transaction/v2"
   body:
     type: json
-    data: "{\r
-
-      \    \"stockCode\": \"ASHOKLEYDUMMY\",\r
-
-      \    \"stockName\": \"Dummy Stock\",\r
-
-      \    \"exchangeName\": \"NSE\",\r
-
-      \    \"brokerName\": \"ZERODHA\",\r
-
-      \    \"price\": 10,\r
-
-      \    \"assetType\": \"EQUITY\",\r
-
-      \    \"quantity\": 1,\r
-
-      \    \"actorName\": \"Thiru\",\r
-
-      \    \"transactionType\": \"SELL\",\r
-
-      \    \"transactionDate\": \"2025-08-08\",\r
-
-      \    \"brokerCharges\": 3\r
-
-      }\r\n"
+    data: |-
+      {
+        "stockCode": "ASHOKLEYDUMMY",
+        "stockName": "Dummy Stock",
+        "exchangeName": "NSE",
+        "brokerName": "ZERODHA",
+        "price": 10,
+        "assetType": "EQUITY",
+        "quantity": 1,
+        "transactionType": "SELL",
+        "transactionDate": "2025-08-08",
+        "brokerCharges": 3
+      }
   auth: inherit
 
 settings:

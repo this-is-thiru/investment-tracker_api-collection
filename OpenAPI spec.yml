@@ -1,0 +1,22 @@
+info:
+  name: OpenAPI spec
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/admin/docs/openapi"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+docs: |-
+  **Authorisation:** `SUPER_USER`.
+
+  The API's contract as OpenAPI 3 JSON, generated from the controllers (W-359b): every route, its parameters and its request and
+  response types. No Swagger UI is served, since a browser cannot carry the admin token a page in the admin zone needs; import this
+  answer into the collection's client or any OpenAPI viewer. The build checks every request in this collection against it
+  (`ApiCollectionContractIntegrationTest`).

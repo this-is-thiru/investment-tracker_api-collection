@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://localhost:8080/api/v1/public/finances/calculate
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/public/finances/calculate"
   headers:
     - name: Content-Type
       value: application/json
