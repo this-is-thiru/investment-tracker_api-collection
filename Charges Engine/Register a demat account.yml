@@ -37,7 +37,8 @@ docs: |-
   **Endpoint:**
   `POST {{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/charges/charge-accounts`
 
-  The path owns the email; an `email` in the body is overwritten by it. `GET` on the same path lists
-  the accounts registered for a user.
+  The token owns the email: a body naming `email` is refused 400, and so is one naming
+  `lastBilledThrough` or `billingEvents`, which only the AMC run writes (W-206). `GET` on the same
+  path lists the accounts registered for a user.
 
   `amcFrequency` is `ANNUALLY` or `QUARTERLY`.
