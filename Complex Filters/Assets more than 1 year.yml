@@ -18,7 +18,7 @@ http:
 
       \      \"operation\": \"LESSER_THAN_OR_EQUAL_TO\",\r
 
-      \      \"value\": \"2024-12-3\",\r
+      \      \"value\": \"2024-12-03\",\r
 
       \      \"logicalOperation\": \"AND\",\r
 

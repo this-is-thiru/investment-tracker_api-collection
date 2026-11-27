@@ -1,0 +1,34 @@
+info:
+  name: Buy Stock | V2
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{INVESTMENT_TRACKER_SERVICE}}/api/v1/me/portfolio/transaction/v2"
+  body:
+    type: json
+    data: |-
+      {
+        "stockCode": "ASHOKLEYDUMMY",
+        "stockName": "Dummy Stock",
+        "exchangeName": "NSE",
+        "brokerName": "ZERODHA",
+        "price": 10,
+        "assetType": "EQUITY",
+        "quantity": 1,
+        "transactionType": "BUY",
+        "transactionDate": "2025-08-01",
+        "brokerCharges": 3
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Records a buy through the V2 flow (D-994: V2 is the flow to lead with): one lot per buy, its charges priced by the
+  engine and made the cost basis. Dated before Sell Stock | V2, so that sale has this lot to draw on.
