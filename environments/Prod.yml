@@ -2,7 +2,13 @@ name: Prod
 variables:
   - name: INVESTMENT_TRACKER_SERVICE
     value: http://localhost:8080
+  - name: JWT_TOKEN
+    value: ""
   - name: EMAIL
     value: pthirumalayadav@gmail.com
   - secret: true
     name: PASSWORD
+  - name: REFRESH_TOKEN
+    value: ""
+  - name: PRIVACY_NOTICE_VERSION
+    value: ""

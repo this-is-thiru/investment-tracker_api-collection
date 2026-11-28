@@ -8,3 +8,7 @@ variables:
     value: pthirumalayadav@gmail.com
   - secret: true
     name: PASSWORD
+  - name: REFRESH_TOKEN
+    value: ""
+  - name: PRIVACY_NOTICE_VERSION
+    value: ""
